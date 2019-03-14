@@ -1,0 +1,12 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined. If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+
+a_test_run: {test_run_name: 20190120120000.json, time_ran: '2019-01-20 12:00:00', team: no_team}
+
+
+first_test_run: {test_run_name: first_test_run.json, time_ran: '2019-01-20 12:00:00', team: team_one}
+second_test_run: {test_run_name: second_test_run.json, time_ran: '2019-01-21 12:00:00', team: team_one}
+third_test_run: {test_run_name: thrid_test_run.json, time_ran: '2019-01-22 12:00:00', team: team_one}

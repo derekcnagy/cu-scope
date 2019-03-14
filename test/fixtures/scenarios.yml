@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined. If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+first_scenario: {scenario_name: First Scenario, steps: Given first given step,
+                 json_scenario_id: "first-feature;first-scenario",
+                 scenario_description: 'The Scenario Description', feature: first_feature}
+
+second_scenario: {scenario_name: Second Scenario, steps: Given first given step\nWhen first when step\nThen second then step\n,
+                 json_scenario_id: "first-feature;second-scenario", feature: first_feature}
+
+third_scenario: {scenario_name: Third Scenario, steps: Given third given step,
+                 json_scenario_id: "first-feature;third-scenario", feature: first_feature}
+
+forth_scenario: {scenario_name: Forth Scenario, steps: Given forth given step,
+                 json_scenario_id: "second-feature;forth-scenario", feature: second_feature}
+
+fifth_scenario: {scenario_name: Fifth Scenario, steps: Given fifth given step,
+                 json_scenario_id: "second-feature;fifth-scenario", feature: second_feature}

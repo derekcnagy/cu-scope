@@ -1,0 +1,15 @@
+<h1>New User</h1>
+
+<%= render "shared/menu" %>
+
+<div>New User</div>
+
+<%= form_tag('/new_user') do %>
+  <div>Username: <%= text_field_tag :username %></div>
+  <div>First Name: <%= text_field_tag :first_name %></div>
+  <div>Last Name: <%= text_field_tag :last_name %></div>
+  <div>Password: <%= password_field_tag :password %></div>
+  <div>Confirm Password: <%= password_field_tag :password_confirmation %></div>
+  <div>Team: <%= select_tag "team", options_from_collection_for_select(@teams, 'id', 'team_name')%></div>
+  <%= submit_tag "Create User" %>
+<% end %>

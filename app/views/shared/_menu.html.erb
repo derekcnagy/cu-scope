@@ -1,0 +1,20 @@
+<%= link_to 'Report', :controller => :report_viewer, :action => :index %>
+<%= link_to 'Analytics', :controller => :analytics, :action => :index %>
+<% unless session[:user_id].nil? %>
+  <% unless session[:user_type].eql? 4 %>
+    <%= link_to 'Add Report', :controller => :file_uploader, :action => :index %>
+    <%= link_to 'Teams', :controller => :teams, :action => :index %>
+    <%= link_to 'Profiles', :controller => :profiles, :action => :index %>
+    <%= link_to 'Test Runs', :controller => :test_runs, :action => :index %>
+    <% if session[:user_type].eql? 1 %>
+      <%= link_to 'Users', :controller => :users, :action => :index %>
+    <% end %>
+    <%= link_to 'Settings', :controller => :user_settings, :action => :index %>
+  <% end %>
+<% end %>
+
+<% if session[:user_id].nil? %>
+  <%= link_to 'Login', :controller => :sessions, :action => :index %>
+<% else %>
+  <%= link_to "Log out", login_sessions_path, method: :delete %>
+<% end %>

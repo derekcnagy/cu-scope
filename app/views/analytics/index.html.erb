@@ -1,0 +1,47 @@
+<h1>Analytics</h1>
+
+<%= render "shared/menu" %>
+
+<h2>Most Failed Scenarios</h2>
+
+<%= form_tag('/analytics/change_team') do %>
+  <%= select_tag 'team', options_from_collection_for_select(@teams, 'id', 'team_name', session[:team])%>
+  <%= submit_tag 'Change Team' %>
+<% end %>
+
+<table>
+<th>Scenario</th>
+<th>Failed Percent</th>
+  <% @most_failed_scenarios.each do |scenario_id, scenario| %>
+  <tr>
+    <td><%= scenario[:scenario_name] %></td>
+    <td><%= scenario[:test_fail_percent] %></td>
+  </tr>
+  <% end %>
+</table>
+
+<h2>Longest Running Tests</h2>
+<table>
+  <th>Scenario</th>
+  <th>Duration</th>
+  <th>Compared To Average</th>
+  <% @longest_running_tests.each do |scenario_id, scenario| %>
+    <tr>
+      <td><%= scenario[:scenario_name] %></td>
+      <td><%= scenario[:duration] %></td>
+      <td><%= scenario[:compared_to_average] %></td>
+    </tr>
+  <% end %>
+</table>
+
+<h2>Most Common Errors</h2>
+<table>
+  <th>Error Message</th>
+  <th>Error Count</th>
+  <% @most_common_errors.each do |error_messages_id, error| %>
+  <tr>
+    <td><%= error[:error_message] %></td>
+    <td><%= error[:error_count] %></td>
+  </tr>
+  <% end %>
+</table>

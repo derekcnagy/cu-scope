@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined. If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+
+a_passing_test: {passed: true, duration: 100, test_run: a_test_run, scenario: a_scenario}
+
+
+first_test_run_first_scenario: {passed: false, duration: 300000000000, test_run: first_test_run, scenario: first_scenario, error_message: first_failure}
+first_test_run_second_scenario: {passed: true, duration: 400000000000, test_run: first_test_run, scenario: second_scenario}
+first_test_run_third_scenario: {passed: false, duration: 000000000000, test_run: first_test_run, scenario: third_scenario, error_message: second_failure}
+first_test_run_forth_scenario: {passed: false, duration: 600000000000, test_run: first_test_run, scenario: forth_scenario, error_message: second_failure}
+first_test_run_fifth_scenario: {passed: true, duration: 200000000000, test_run: first_test_run, scenario: fifth_scenario}
+
+second_test_run_first_scenario: {passed: false, duration: 100000000000, test_run: second_test_run, scenario: first_scenario, error_message: first_failure}
+second_test_run_second_scenario: {passed: true, duration: 200000000000, test_run: second_test_run, scenario: second_scenario}
+second_test_run_third_scenario: {passed: true, duration: 100000000000, test_run: second_test_run, scenario: third_scenario}
+second_test_run_forth_scenario: {passed: true, duration: 300000000000, test_run: second_test_run, scenario: forth_scenario}
+second_test_run_fifth_scenario: {passed: false, duration: 100000000000, test_run: second_test_run, scenario: fifth_scenario, error_message: second_failure}
+
+third_test_run_first_scenario: {passed: true, duration: 100000000000, test_run: third_test_run, scenario: first_scenario}
+third_test_run_second_scenario: {passed: true, duration: 100000000000, test_run: third_test_run, scenario: second_scenario}
+thrid_test_run_third_scenario: {passed: false, duration: 200000000000, test_run: third_test_run, scenario: third_scenario, error_message: first_failure}
+third_test_run_forth_scenario: {passed: true, duration: 200000000000, test_run: third_test_run, scenario: forth_scenario}
+third_test_run_fifth_scenario: {passed: false, duration: 300000000000, test_run: third_test_run, scenario: fifth_scenario, error_message: first_failure}
+
+

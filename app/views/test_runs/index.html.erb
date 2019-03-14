@@ -1,0 +1,30 @@
+<h1>Test Runs</h1>
+
+<%= render "shared/menu" %>
+
+<div>Test Runs</div>
+
+<table>
+  <th>Test Run Name</th>
+  <th>Time Ran</th>
+  <th>Team</th>
+  <th>Profile</th>
+  <th>Delete</th>
+  <% @test_runs.each do |test_run| %>
+    <tr>
+      <%= form_tag test_run, method: :put do %>
+        <td><%= text_field_tag :test_run_name, test_run[:test_run_name], readonly: true %></td>
+        <td><%= text_field_tag :time_ran, test_run[:time_ran], readonly: true %></td>
+        <td>
+          <%= @teams[test_run[:team_id]] %>
+        </td>
+        <td>
+          <%= @profiles[test_run[:profile_id]] %>
+        </td>
+      <% end %>
+      <%= form_tag test_run, method: :delete do %>
+        <td><%= submit_tag 'Delete' %></td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>

@@ -1,0 +1,14 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined. If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+
+scenario_note: {note: 'this is a note for the a scenario', scenario: first_scenario,
+                error_message: first_failure, team: team_one, user: admin}
+
+individual_test_note: {note: 'this is a note for the an individual test', individual_test: first_test_run_third_scenario,
+                error_message: second_failure, team: team_one, user: admin}
+
+error_note: {note: 'this is a note for the an error', error_message: third_failure, team: team_one, user: admin}

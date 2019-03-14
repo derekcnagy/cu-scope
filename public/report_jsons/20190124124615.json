@@ -1,0 +1,346 @@
+[
+  {
+    "uri": "/home/derek/RubymineProjects/test_cucumber_project/features/first_feature.feature",
+    "id": "first-feature",
+    "keyword": "Feature",
+    "name": "First Feature",
+    "description": "  Describing The First Feature",
+    "line": 1,
+    "elements": [
+      {
+        "id": "first-feature;my-first-scenario",
+        "keyword": "Scenario",
+        "name": "My First Scenario",
+        "description": "  Describing The First Scenario",
+        "line": 4,
+        "type": "scenario",
+        "steps": [
+          {
+            "keyword": "Given ",
+            "name": "first given step",
+            "line": 6,
+            "match": {
+              "location": "features/step_definitions/first_feature_steps.rb:1"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 42645
+            }
+          },
+          {
+            "keyword": "When ",
+            "name": "first when step",
+            "line": 7,
+            "match": {
+              "location": "features/step_definitions/first_feature_steps.rb:4"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 48173
+            }
+          },
+          {
+            "keyword": "Then ",
+            "name": "first then step",
+            "line": 8,
+            "match": {
+              "location": "features/step_definitions/first_feature_steps.rb:25"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 32683
+            }
+          }
+        ]
+      },
+      {
+        "id": "first-feature;my-second-scenario",
+        "keyword": "Scenario",
+        "name": "My Second Scenario",
+        "description": "",
+        "line": 10,
+        "type": "scenario",
+        "steps": [
+          {
+            "keyword": "Given ",
+            "name": "first given step",
+            "line": 11,
+            "match": {
+              "location": "features/step_definitions/first_feature_steps.rb:1"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 33020
+            }
+          },
+          {
+            "keyword": "When ",
+            "name": "first when step",
+            "line": 12,
+            "match": {
+              "location": "features/step_definitions/first_feature_steps.rb:4"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 28739
+            }
+          },
+          {
+            "keyword": "Then ",
+            "name": "second then step",
+            "line": 13,
+            "match": {
+              "location": "features/step_definitions/first_feature_steps.rb:30"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 30048
+            }
+          }
+        ]
+      },
+      {
+        "id": "first-feature;a-scenario-outline;;2",
+        "keyword": "Scenario Outline",
+        "name": "A Scenario Outline",
+        "description": "",
+        "line": 21,
+        "type": "scenario",
+        "steps": [
+          {
+            "keyword": "Given ",
+            "name": "an outline given",
+            "line": 16,
+            "match": {
+              "location": "features/step_definitions/first_feature_steps.rb:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 34258
+            }
+          },
+          {
+            "keyword": "When ",
+            "name": "an outline when",
+            "line": 17,
+            "match": {
+              "location": "features/step_definitions/first_feature_steps.rb:17"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 31114
+            }
+          },
+          {
+            "keyword": "Then ",
+            "name": "an outline then one",
+            "line": 18,
+            "match": {
+              "location": "features/step_definitions/first_feature_steps.rb:34"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 55248
+            }
+          }
+        ]
+      },
+      {
+        "id": "first-feature;a-scenario-outline;;3",
+        "keyword": "Scenario Outline",
+        "name": "A Scenario Outline",
+        "description": "",
+        "line": 22,
+        "type": "scenario",
+        "steps": [
+          {
+            "keyword": "Given ",
+            "name": "an outline given",
+            "line": 16,
+            "match": {
+              "location": "features/step_definitions/first_feature_steps.rb:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 33352
+            }
+          },
+          {
+            "keyword": "When ",
+            "name": "an outline when",
+            "line": 17,
+            "match": {
+              "location": "features/step_definitions/first_feature_steps.rb:17"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 35925
+            }
+          },
+          {
+            "keyword": "Then ",
+            "name": "an outline then two",
+            "line": 18,
+            "match": {
+              "location": "features/step_definitions/first_feature_steps.rb:34"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 55892
+            }
+          }
+        ]
+      },
+      {
+        "id": "first-feature;a-scenario-outline;;4",
+        "keyword": "Scenario Outline",
+        "name": "A Scenario Outline",
+        "description": "",
+        "line": 23,
+        "type": "scenario",
+        "steps": [
+          {
+            "keyword": "Given ",
+            "name": "an outline given",
+            "line": 16,
+            "match": {
+              "location": "features/step_definitions/first_feature_steps.rb:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 31260
+            }
+          },
+          {
+            "keyword": "When ",
+            "name": "an outline when",
+            "line": 17,
+            "match": {
+              "location": "features/step_definitions/first_feature_steps.rb:17"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 29970
+            }
+          },
+          {
+            "keyword": "Then ",
+            "name": "an outline then three",
+            "line": 18,
+            "match": {
+              "location": "features/step_definitions/first_feature_steps.rb:34"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 47040
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "uri": "/home/derek/RubymineProjects/test_cucumber_project/features/second_feature.feature",
+    "id": "second-feature",
+    "keyword": "Feature",
+    "name": "Second Feature",
+    "description": "",
+    "line": 1,
+    "elements": [
+      {
+        "id": "second-feature;third-scenario",
+        "keyword": "Scenario",
+        "name": "Third Scenario",
+        "description": "",
+        "line": 3,
+        "type": "scenario",
+        "steps": [
+          {
+            "keyword": "Given ",
+            "name": "first given step",
+            "line": 4,
+            "match": {
+              "location": "features/step_definitions/first_feature_steps.rb:1"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 34440
+            }
+          },
+          {
+            "keyword": "When ",
+            "name": "first when step",
+            "line": 5,
+            "match": {
+              "location": "features/step_definitions/first_feature_steps.rb:4"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 35846
+            }
+          },
+          {
+            "keyword": "Then ",
+            "name": "third then step",
+            "line": 6,
+            "match": {
+              "location": "features/step_definitions/first_feature_steps.rb:61"
+            },
+            "result": {
+              "status": "failed",
+              "error_message": "Third Failure (RuntimeError)\n./features/step_definitions/first_feature_steps.rb:62:in `/^third then step$/'\n./features/second_feature.feature:6:in `Then third then step'",
+              "duration": 186801
+            }
+          }
+        ]
+      },
+      {
+        "id": "second-feature;new-scenario",
+        "keyword": "Scenario",
+        "name": "New Scenario",
+        "description": "",
+        "line": 8,
+        "type": "scenario",
+        "steps": [
+          {
+            "keyword": "Given ",
+            "name": "new given step",
+            "line": 9,
+            "match": {
+              "location": "features/step_definitions/second_feature_steps.rb:1"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 32769
+            }
+          },
+          {
+            "keyword": "When ",
+            "name": "new when step",
+            "line": 10,
+            "match": {
+              "location": "features/step_definitions/second_feature_steps.rb:4"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 23565
+            }
+          },
+          {
+            "keyword": "Then ",
+            "name": "new then step",
+            "line": 11,
+            "match": {
+              "location": "features/step_definitions/first_feature_steps.rb:67"
+            },
+            "result": {
+              "status": "failed",
+              "error_message": "New Failure (RuntimeError)\n./features/step_definitions/first_feature_steps.rb:68:in `/^new then step$/'\n./features/second_feature.feature:11:in `Then new then step'",
+              "duration": 159843
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

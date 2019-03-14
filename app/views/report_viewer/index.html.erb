@@ -1,0 +1,77 @@
+<h1>Reports</h1>
+
+<%= render "shared/menu" %>
+
+<%= form_tag('/report_viewer/change_team') do %>
+  <%= select_tag 'team', options_from_collection_for_select(@teams, 'id', 'team_name', session[:team])%>
+  <%= submit_tag 'Change Team' %>
+<% end %>
+<%= form_tag('/report_viewer/change_profile') do %>
+  <%= select_tag 'profile', options_from_collection_for_select(@profiles, 'id', 'profile_name', session[:profile]), include_blank: "None" %>
+  <%= submit_tag 'Change Profile' %>
+<% end %>
+<%= form_tag('/report_viewer/change_date_range') do %>
+  <%= date_field_tag :from_date, @from_date %>
+  <%= date_field_tag :to_date, @to_date %>
+  <%= submit_tag 'Change Date Range' %>
+<% end %>
+
+<table>
+  <th></th>
+  <th></th>
+  <% @test_run_times.each do |time| %>
+    <th><%= time %></th>
+  <% end %>
+  <% @test_data.each do |feature_json_id, feature_data| %>
+    <tr>
+      <td rowspan="<%= feature_data[:scenarios].size + 1 %>">
+        <%= feature_data[:feature_name] %>
+      </td>
+    </tr>
+    <% feature_data[:scenarios].each do |scenario_json_id, scenario_data| %>
+      <tr>
+        <td>
+          <%= scenario_data[:scenario_name] %>
+        </td>
+        <% scenario_data[:scenario_tests].each do |test| %>
+          <% if test.nil? %>
+            <td bgcolor="#a9a9a9">
+              <div class="test_status">Not in this Run</div>
+            </td>
+          <% elsif test[:passed] %>
+            <td bgcolor="#32cd32">
+              <div class="test_status">Passed</div>
+              <div class="test_details">
+                <div>Duration: <%= test[:duration] %></div>
+              </div>
+            </td>
+          <% else %>
+            <td bgcolor="red">
+              <div class="test_status">Failed</div>
+              <div class="test_details">
+                <div>Duration: <%= test[:duration] %></div>
+                <div><%= test[:error_message] %></div>
+                <% test[:Notes].each do |note_for, notes| %>
+                  <div><%= note_for %></div>
+                  <% notes.each do |note| %>
+                    <div><%= note %></div>
+                    <div>-------------------</div>
+                  <% end %>
+                <% end %>
+                <%= form_tag '/notes' do %>
+                  <%= hidden_field_tag :scenario, scenario_data[:scenarios_id] %>
+                  <%= hidden_field_tag :test, test[:test_id] %>
+                  <%= hidden_field_tag :error_message, test[:error_message_id] %>
+                  <%= text_area_tag :note %>
+                  <%= select_tag :note_for, options_for_select(%w(Scenario Test Error)) %>
+                  <%= submit_tag 'Add Note' %>
+                <% end %>
+              </div>
+            </td>
+          <% end %>
+        <% end %>
+      </tr>
+
+    <% end %>
+  <% end %>
+</table>

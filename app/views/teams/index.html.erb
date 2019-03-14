@@ -1,0 +1,14 @@
+<h1>Teams</h1>
+
+<%= render "shared/menu" %>
+
+<div>Existing Teams</div>
+
+<% @teams.each do |team| %>
+  <div id="exiting_team_name"><%= team[:team_name] %></div>
+<% end %>
+
+<%= form_tag('/teams', multipart: true) do %>
+  <%= text_field_tag :team_name %>
+  <%= submit_tag "Add Team" %>
+<% end %>

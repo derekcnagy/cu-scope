@@ -1,0 +1,34 @@
+<h1>Users</h1>
+
+<%= render "shared/menu" %>
+<% if flash[:alert] %>
+  <div class="alert"><%= flash[:alert] %></div>
+<% end %>
+<table>
+  <th>Username</th>
+  <th>First Name</th>
+  <th>Last Name</th>
+  <th>Team</th>
+  <th>User Type</th>
+  <th>Update User</th>
+  <th>Reset Password</th>
+  <th>Delete User</th>
+  <% @users.each do |user| %>
+    <tr>
+      <%= form_tag user, method: :put do %>
+        <td><%= text_field_tag :username, user[:username] %></td>
+        <td><%= text_field_tag :first_name, user[:first_name] %></td>
+        <td><%= text_field_tag :last_name, user[:last_name] %></td>
+        <td><%= select_tag 'team', options_from_collection_for_select(@teams, 'id', 'team_name', user[:team_id])%></td>
+        <td><%= select_tag 'user_type', options_from_collection_for_select(@user_types, 'id', 'type_name', user[:user_type_id]) %></td>
+        <td><%= submit_tag 'Update' %></td>
+      <% end %>
+      <%= form_tag "/users/#{user[:id]}/reset_password", method: :put do %>
+        <td><%= submit_tag 'Reset Password' %></td>
+      <% end %>
+      <%= form_tag user, method: :delete do %>
+        <td><%= submit_tag 'Delete' %></td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>
