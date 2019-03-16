@@ -3,9 +3,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :report_viewer do
     collection do
-      post 'change_team', to: 'report_viewer#change_team'
-      post 'change_profile', to: 'report_viewer#change_profile'
-      post 'change_date_range', to: 'report_viewer#change_date_range'
+      post 'view_report', to: 'report_viewer#view_report'
     end
   end
   resources :teams

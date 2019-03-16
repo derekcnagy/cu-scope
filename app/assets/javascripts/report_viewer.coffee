@@ -5,3 +5,8 @@
 $ ->
   $(".test_status").on "click", ->
     $(this).siblings('.test_details').toggle("slow")
+
+
+  $("#team").on "change", ->
+    $('.profile_selector').hide()
+    $("#team_#{this.value}_profiles").show()

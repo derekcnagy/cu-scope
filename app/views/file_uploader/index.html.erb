@@ -4,18 +4,40 @@
 <%= render "shared/menu" %>
 
 <div>Files Waiting to Process:</div>
-<div id="files_to_process_list">
+<table id="files_to_process_list">
+  <th>File Name</th>
+  <th>Time Ran</th>
+  <th>Team</th>
+  <th>Profile</th>
+  <th>Process</th>
   <% @files_to_process.each do |file| %>
-    <%= form_tag 'file_uploader/process_file', method: :post do %>
-      <%= text_field_tag :file_name, file[:file_name], readonly: true %>
-      <%= datetime_field_tag :time_ran, file[:time_ran] %>
-      <%= select_tag "team", options_from_collection_for_select(@teams, 'id', 'team_name', file[:team]) %>
-      <%= select_tag "profile", options_from_collection_for_select(@profiles[file[:team]], 'id', 'profile_name', file[:profile]), include_blank: 'None' %>
-      <%= submit_tag "Process" %>
-      <div id="test_three">Test Three</div>
-    <% end %>
+    <tr>
+      <%= form_tag 'file_uploader/process_file', method: :post do %>
+        <td>
+          <%= text_field_tag :file_name, file[:file_name], readonly: true %>
+        </td>
+        <td>
+          <%= datetime_field_tag :time_ran, file[:time_ran] %>
+        </td>
+        <td>
+          <%= select_tag "team", options_from_collection_for_select(@teams, 'id', 'team_name', file[:team]), class: 'team_selector' %>
+        </td>
+        <td>
+          <% @profiles.each do |team, profiles| %>
+            <div class="profile_selector" id="team_<%= team %>_profiles"
+                 <% unless team.eql? file[:team] %>style="display: none;"
+                 <% end %>>
+              <%= select_tag "profile_team_#{team}", options_from_collection_for_select(profiles, 'id', 'profile_name', file[:profile]), include_blank: 'None', class: 'profile_selector' %>
+            </div>
+          <% end %>
+        </td>
+        <td>
+          <%= submit_tag "Process" %>
+        </td>
+      <% end %>
   <% end %>
-</div>
+  </tr>
+</table>
 </br>
 </br>
 

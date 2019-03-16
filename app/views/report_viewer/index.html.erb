@@ -2,23 +2,34 @@
 
 <%= render "shared/menu" %>
 
-<%= form_tag('/report_viewer/change_team') do %>
-  <%= select_tag 'team', options_from_collection_for_select(@teams, 'id', 'team_name', session[:team])%>
-  <%= submit_tag 'Change Team' %>
-<% end %>
-<%= form_tag('/report_viewer/change_profile') do %>
-  <%= select_tag 'profile', options_from_collection_for_select(@profiles, 'id', 'profile_name', session[:profile]), include_blank: "None" %>
-  <%= submit_tag 'Change Profile' %>
-<% end %>
-<%= form_tag('/report_viewer/change_date_range') do %>
-  <%= date_field_tag :from_date, @from_date %>
-  <%= date_field_tag :to_date, @to_date %>
-  <%= submit_tag 'Change Date Range' %>
-<% end %>
-
 <table>
-  <th></th>
-  <th></th>
+  <th>From Date</th>
+  <th>To Date</th>
+  <th>Team</th>
+  <th>Profile</th>
+  <th>View Report</th>
+  <%= form_tag('/report_viewer/view_report') do %>
+    <tr>
+      <td><%= date_field_tag :from_date, @from_date %></td>
+      <td><%= date_field_tag :to_date, @to_date %></td>
+      <td><%= select_tag 'team', options_from_collection_for_select(@teams, 'id', 'team_name', session[:team]) %></td>
+      <td>
+        <% @profiles.each do |team, profiles| %>
+        <div class="profile_selector" id="team_<%= team %>_profiles"
+             <% unless team.to_i.eql? session[:team].to_i %>style="display: none;"
+             <% end %>>
+          <%= select_tag "profile_team_#{team}", options_from_collection_for_select(profiles, 'id', 'profile_name', session[:profile]), include_blank: 'None' %>
+        </div>
+      <% end %>
+      </td>
+      <td><%= submit_tag 'View Report' %></td>
+    </tr>
+  <% end %>
+
+</table>
+<table>
+  <th>Features</th>
+  <th>Scenarios</th>
   <% @test_run_times.each do |time| %>
     <th><%= time %></th>
   <% end %>
