@@ -16,8 +16,10 @@ class ReportViewerController < ApplicationController
   end
 
   def view_report
-    session[:team] = params[:team]
-    session[:profile] = params[:profile]
+    team = params[:team]
+    profile = "profile_team_#{team}"
+    session[:team] = team
+    session[:profile] = profile
     session[:from_date] = params[:from_date]
     session[:to_date] = params[:to_date]
     redirect_back(fallback_location: root_path)
