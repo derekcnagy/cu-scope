@@ -1,5 +1,11 @@
 module ReportViewerHelper
   def build_report(team_id, profile_id, from_date, to_date)
+    puts 'Bad Wolf'
+    puts team_id
+    puts profile_id
+    puts from_date
+    puts to_date
+    puts '--------------------'
     team_id = team_id.nil? ? 1 : team_id
     from_date += " 00:00:00"
     to_date += " 23:59:59"

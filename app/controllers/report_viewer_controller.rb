@@ -16,8 +16,8 @@ class ReportViewerController < ApplicationController
   end
 
   def view_report
-    team = params[:team]
-    profile = "profile_team_#{team}"
+    team = params[:team_selector]
+    profile = params["profile_team_#{team}"]
     session[:team] = team
     session[:profile] = profile
     session[:from_date] = params[:from_date]

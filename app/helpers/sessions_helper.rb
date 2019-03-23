@@ -6,8 +6,8 @@ module SessionsHelper
 
   def log_out
     session.delete(:user_id)
-    session[:profiles_id] = nil
-    session[:teams_id] = nil
+    session[:profile] = nil
+    session[:team] = 1
   end
 
   def update_session(user)

@@ -7,6 +7,6 @@ $ ->
     $(this).siblings('.test_details').toggle("slow")
 
 
-  $("#team").on "change", ->
+  $("#team_selector").on "change", ->
     $('.profile_selector').hide()
     $("#team_#{this.value}_profiles").show()

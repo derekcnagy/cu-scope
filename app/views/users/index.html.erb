@@ -19,7 +19,7 @@
         <td><%= text_field_tag :username, user[:username] %></td>
         <td><%= text_field_tag :first_name, user[:first_name] %></td>
         <td><%= text_field_tag :last_name, user[:last_name] %></td>
-        <td><%= select_tag 'team', options_from_collection_for_select(@teams, 'id', 'team_name', user[:team_id])%></td>
+        <td><%= select_tag 'team_selector', options_from_collection_for_select(@teams, 'id', 'team_name', user[:team_id])%></td>
         <td><%= select_tag 'user_type', options_from_collection_for_select(@user_types, 'id', 'type_name', user[:user_type_id]) %></td>
         <td><%= submit_tag 'Update' %></td>
       <% end %>

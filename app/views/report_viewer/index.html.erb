@@ -12,7 +12,7 @@
     <tr>
       <td><%= date_field_tag :from_date, @from_date %></td>
       <td><%= date_field_tag :to_date, @to_date %></td>
-      <td><%= select_tag 'team', options_from_collection_for_select(@teams, 'id', 'team_name', session[:team]) %></td>
+      <td><%= select_tag 'team_selector', options_from_collection_for_select(@teams, 'id', 'team_name', session[:team]) %></td>
       <td>
         <% @profiles.each do |team, profiles| %>
         <div class="profile_selector" id="team_<%= team %>_profiles"

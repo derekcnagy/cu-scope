@@ -4,5 +4,7 @@
 
 $ ->
   $(".team_selector").on "change", ->
+#    $(this).parents('tr').find('input').hide()
     $(this).parents('tr').find('td div.profile_selector').hide()
-    $(this).parents('tr').find("#team_#{this.value}_profiles").show()
+#    $('#test_two').text "team_#{this.value}_profiles"
+    $(this).parents('tr').find("td div#team_#{this.value}_profiles").show()

@@ -4,12 +4,30 @@
 
 <div>Existing Profiles</div>
 
-<% @profiles.each do |profile| %>
-  <div id="exiting_team_name"><%= profile[:profile_name] %></div>
-<% end %>
+<table>
+  <th>Team Name</th>
+  <th>Profile Name</th>
+  <th>Rename Profile</th>
+  <th>Delete Profile</th>
+
+  <% @profiles.each do |profile| %>
+    <tr>
+      <td><%= @team_names[profile[:team_id]] %></td>
+      <%= form_tag(profile, method: :patch) do %>
+        <%= hidden_field_tag :profile_id, profile[:id] %>
+        <td><%= text_field_tag :profile_name, profile[:profile_name] %></td>
+        <td><%= submit_tag 'Rename' %></td>
+      <% end %>
+      <%= form_tag(profile, method: :delete) do %>
+        <%= hidden_field_tag :profile_id, profile[:id] %>
+        <td><%= submit_tag 'Delete' %></td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>
 
 <%= form_tag('/profiles', multipart: true) do %>
   <%= text_field_tag :profile_name %>
-  <%= select_tag 'team', options_from_collection_for_select(@teams, 'id', 'team_name')%>
+  <%= select_tag 'team', options_from_collection_for_select(@teams, 'id', 'team_name') %>
   <%= submit_tag 'Add Profile' %>
 <% end %>

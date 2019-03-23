@@ -4,8 +4,11 @@ class UserSettingsController < ApplicationController
   def index
     @user = User.find session[:user_id]
     @teams = Team.all
-    @profiles = Profile.where(team_id: session[:team])
-    @user_type = UserType.find(session[:user_type_id])
+    @profiles = {}
+    @teams.each do |team|
+      @profiles[team[:id]] = Profile.where team_id: team[:id]
+    end
+    @user_type = UserType.find(session[:user_type])
   end
 
   def change_password
