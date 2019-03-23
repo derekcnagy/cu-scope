@@ -36,10 +36,11 @@ class FileUploaderController < ApplicationController
 
   def process_file
     team = params[:team]
-    profile = "profile_team_#{team}"
+    profile = params["profile_team_#{team}"]
     report_data = JSON.parse File.read "public/report_jsons/#{params[:file_name]}"
-    store_test_run report_data: report_data, time_ran: params[:time_name],
+    store_test_run report_data: report_data, time_ran: params[:time_ran],
                    file_name: params[:file_name], team: team, profile: profile
     File.delete "public/report_jsons/#{params[:file_name]}"
+    redirect_back(fallback_location: root_path)
   end
 end

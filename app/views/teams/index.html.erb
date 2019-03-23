@@ -4,9 +4,24 @@
 
 <div>Existing Teams</div>
 
-<% @teams.each do |team| %>
-  <div id="exiting_team_name"><%= team[:team_name] %></div>
-<% end %>
+<table>
+  <th>Team Name</th>
+  <th>Rename Team</th>
+  <th>Delete Team</th>
+  <% @teams.each do |team| %>
+    <tr>
+      <%= form_tag(team, method: :patch) do %>
+        <%= hidden_field_tag :team_id, team[:id] %>
+        <td><%= text_field_tag :team_name, team[:team_name] %></td>
+        <td><%= submit_tag 'Rename' %></td>
+      <% end %>
+      <%= form_tag(team, method: :delete) do %>
+        <%= hidden_field_tag :team_id, team[:id] %>
+        <td><%= submit_tag 'Delete' %></td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>
 
 <%= form_tag('/teams', multipart: true) do %>
   <%= text_field_tag :team_name %>

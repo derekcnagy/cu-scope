@@ -7,10 +7,16 @@ class UsersController < ApplicationController
   end
 
   def update
+    team = params[:team_selector]
+    profile = params["profile_team_#{team}"]
     User.where(id: params[:id]).update_all(user_type_id: params[:user_type], username: params[:username],
                                            first_name: params[:first_name], last_name: params[:last_name],
-                                           team_id: params[:team])
+                                           team_id: team, profile_id: profile)
 
+    if params[:id].to_i.eql? session[:user_id].to_i
+      session[:team] = team
+      session[:profile] = profile
+    end
     redirect_back(fallback_location: root_path)
   end
 
