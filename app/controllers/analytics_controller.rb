@@ -2,21 +2,6 @@ class AnalyticsController < ApplicationController
   include AnalyticsHelper
 
   def index
-    profile = Profile.where(profile_name: 'Full Run', team_id: 1)
-    puts 'Bad Wolf'
-    puts profile
-    puts profile.size
-    puts profile.first
-
-    profile = Profile.where(profile_name: 'Full Runs', team_id: 1)
-    puts profile
-    puts profile.size
-    puts profile.first
-    puts profile.first.nil?
-puts '------------------------------'
-
-
-
     team_id = session[:team].nil? ? 1 : session[:team]
     team = Team.find team_id
 

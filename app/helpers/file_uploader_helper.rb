@@ -3,7 +3,7 @@ module FileUploaderHelper
   def find_team(file_components)
     teams = Team.all
     teams.each do |team|
-      name = team[:team_name].downcase.gsub ' ','_'
+      name = team[:team_name].downcase.gsub ' ', '_'
       return team[:id] if file_components.include? name
     end
     Team.find(1)[:id]
@@ -82,12 +82,15 @@ module FileUploaderHelper
     duration = 0
     error_message = nil
     scenarios_data['steps'].each do |step_data|
-      unless step_data['result']['status'].eql? 'passed'
+      if step_data['result']['status'].eql? 'failed'
         pass = false
         error_message = step_data['result']['error_message']
       end
-      duration += step_data['result']['duration']
+      unless step_data['result']['status'].eql? 'skipped'
+        duration += step_data['result']['duration']
+      end
     end
+
 
     tests = IndividualTest.new
     tests.passed = pass
@@ -103,7 +106,12 @@ module FileUploaderHelper
   end
 
   def store_error_message(error_message)
-    message = error_message.split("\n").first.strip
+    message = ''
+    error_message.split("\n").each do |error|
+      unless error.empty? or error[0,2].eql? './'
+        message += "#{error}\n"
+      end
+    end
     errors = ErrorMessage.find_by error_message: message
     if errors.nil?
       errors = ErrorMessage.new

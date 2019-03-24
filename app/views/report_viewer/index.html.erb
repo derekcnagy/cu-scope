@@ -62,7 +62,7 @@
               <div class="test_details">
                 <div>Duration: <%= test[:duration] %></div>
                 <div><%= test[:error_message] %></div>
-                <% test[:Notes].each do |note_for, notes| %>
+                <% test[:notes].each do |note_for, notes| %>
                   <div><%= note_for %></div>
                   <% notes.each do |note| %>
                     <div><%= note %></div>
