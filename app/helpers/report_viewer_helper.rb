@@ -1,11 +1,5 @@
 module ReportViewerHelper
   def build_report(team_id, profile_id, from_date, to_date)
-    puts 'Bad Wolf'
-    puts team_id
-    puts profile_id
-    puts from_date
-    puts to_date
-    puts '--------------------'
     team_id = team_id.nil? ? 1 : team_id
     from_date += " 00:00:00"
     to_date += " 23:59:59"
@@ -38,6 +32,7 @@ module ReportViewerHelper
         if test.nil?
           scenario_tests.push nil
         else
+          notes = {}
           if test[:error_message_id].nil?
             error_message = nil
           else
@@ -45,7 +40,7 @@ module ReportViewerHelper
             notes = note_data scenario.id, test[:id], test[:error_message_id]
           end
           test_info = {id: test[:id], passed: test[:passed], duration: test[:duration],
-                       error_message_id: test[:error_message_id], error_message: error_message, Notes: notes}
+                       error_message_id: test[:error_message_id], error_message: error_message, notes: notes}
           scenario_tests.push test_info
         end
       end
