@@ -1,19 +1,22 @@
 class Note < ApplicationRecord
-  validate :tied_to_one_and_only_one
+  validate :tied_to_either_scenario_or_test_not_both
   validates :note, presence: true
   belongs_to :scenario, optional: true
   belongs_to :individual_test, optional: true
-  belongs_to :error_message, optional: true
+  belongs_to :error_message
   belongs_to :team
   belongs_to :user
 
-  def tied_to_one_and_only_one
-    attached_count = 0
-    attached_count += 1 unless scenario.nil?
-    attached_count += 1 unless individual_test.nil?
-    attached_count += 1 unless error_message.nil?
-    unless attached_count.eql? 1
-      errors.add(:base, "Must be attached to one and ONLY one of either Scenario, Individual Test, or Error Message")
+  def tied_to_either_scenario_or_test_not_both
+    unless scenario.nil?
+      unless individual_test.nil?
+        errors.add(:base, "If note is attached to a Scenario it must NOT have an attached Individual Test")
+      end
+    end
+    unless individual_test.nil?
+      unless scenario.nil?
+        errors.add(:base, "If note is attached to an Individual Test it must NOT have an attached Scenario")
+      end
     end
   end
 end
