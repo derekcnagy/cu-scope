@@ -1,3 +1,12 @@
 // Place all the styles related to the Analytics controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.most_failed_scenario{
+  width: 50%;
+  float: left;
+}
+.longest_running_test{
+  width: 50%;
+  float: right;
+}

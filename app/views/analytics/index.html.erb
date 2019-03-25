@@ -2,26 +2,28 @@
 
 <%= render "shared/menu" %>
 
-<h2>Most Failed Scenarios</h2>
 
 <%= form_tag('/analytics/change_team') do %>
-  <%= select_tag 'team', options_from_collection_for_select(@teams, 'id', 'team_name', session[:team])%>
+  <%= select_tag 'team', options_from_collection_for_select(@teams, 'id', 'team_name', session[:team]) %>
   <%= submit_tag 'Change Team' %>
 <% end %>
 
-<table>
-<th>Scenario</th>
-<th>Failed Percent</th>
+<h2 class="most_failed_scenario">Most Failed Scenarios</h2>
+<h2 class="longest_running_test">Longest Running Tests</h2>
+<table class="most_failed_scenario">
+  <th>Scenario</th>
+  <th>Failed Percent</th>
   <% @most_failed_scenarios.each do |scenario_id, scenario| %>
-  <tr>
-    <td><%= scenario[:scenario_name] %></td>
-    <td><%= scenario[:test_fail_percent] %></td>
-  </tr>
+    <tr>
+      <td><%= scenario[:scenario_name] %></td>
+      <td style="background-color: rgba(255, 0, 0, <%=scenario[:test_fail_percent].to_f / 100.0 %>)">
+        <%= scenario[:test_fail_percent] %>%
+      </td>
+    </tr>
   <% end %>
 </table>
 
-<h2>Longest Running Tests</h2>
-<table>
+<table class="longest_running_test">
   <th>Scenario</th>
   <th>Duration</th>
   <th>Compared To Average</th>
@@ -29,7 +31,15 @@
     <tr>
       <td><%= scenario[:scenario_name] %></td>
       <td><%= scenario[:duration] %></td>
-      <td><%= scenario[:compared_to_average] %></td>
+      <% if scenario[:compared_to_average] > 100 %>
+        <td style="background-color: rgba(255, 0, 0, <%= (scenario[:compared_to_average] - 100).to_f / 100.0 %>)">
+          <%= scenario[:compared_to_average] %>%
+        </td>
+      <% else %>
+        <td style="background-color: rgba(0, 255, 0, <%= (100 - scenario[:compared_to_average].to_f) / 100.0 %>)">
+          <%= scenario[:compared_to_average] %>%
+        </td>
+      <% end %>
     </tr>
   <% end %>
 </table>
@@ -39,9 +49,9 @@
   <th>Error Message</th>
   <th>Error Count</th>
   <% @most_common_errors.each do |error_messages_id, error| %>
-  <tr>
-    <td><%= error[:error_message] %></td>
-    <td><%= error[:error_count] %></td>
-  </tr>
+    <tr>
+      <td><%= error[:error_message] %></td>
+      <td><%= error[:error_count] %></td>
+    </tr>
   <% end %>
 </table>

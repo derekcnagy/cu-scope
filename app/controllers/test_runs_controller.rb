@@ -2,7 +2,7 @@ class TestRunsController < ApplicationController
   include Pagy::Backend
 
   def index
-    @pagy, @test_runs = pagy(TestRun.all.order(time_ran: :desc))
+    @pagy_test_runs, @test_runs = pagy(TestRun.all.order(time_ran: :desc))
 
     @teams = {}
     Team.all.each do |team|
