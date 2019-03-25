@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   end
   resources :analytics do
     collection do
-      post 'change_team', to: 'report_viewer#change_team'
+      post 'change_team', to: 'analytics#change_team'
     end
   end
   resources :sessions do
