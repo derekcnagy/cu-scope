@@ -5,18 +5,22 @@ class NotesController < ApplicationController
   end
 
   def create
-    test = IndividualTest.find params[:test]
-    team = Team.find params[:team]
-    user = User.find session[:user_id]
-    error_message = ErrorMessage.find params[:error_message]
 
-    note = Note.new(note: params[:note], team: team, user: user, error_message: error_message)
+    puts "Bad WOlf"
+    note = Note.new(note: params[:note], team_id: session[:team], user_id: session[:user_id], error_message_id: params[:error_message])
     case params[:note_for]
     when "Scenario"
-      note.scenarios = Scenario.find params[:scenario]
+      note.scenario_id = params[:scenario]
     when "Test"
-      note.tests = test
+      note.individual_test_id = params[:test]
     end
+    puts "Note: #{note.note}"
+    puts "Team: #{note.team_id}"
+    puts "User: #{note.user_id}"
+    puts "Error Message: #{note.error_message_id}"
+    puts "Test: #{note.individual_test_id}"
+    puts "Scenario: #{note.scenario_id}"
+    puts '----------------------'
     note.save
   end
 end

@@ -54,8 +54,8 @@ module ReportViewerHelper
   def note_data(scenario_id, test_id, error_message_id)
     notes = {}
     test_notes = Note.where(individual_test_id: test_id).collect {|note| note.note}
-    scenario_notes = Note.where(scenario_id: scenario_id).collect {|note| note.note}
-    error_notes = Note.where(error_message_id: error_message_id).collect {|note| note.note}
+    scenario_notes = Note.where(scenario_id: scenario_id, error_message_id: error_message_id).collect {|note| note.note}
+    error_notes = Note.where(scenario_id: nil, error_message_id: error_message_id).collect {|note| note.note}
     notes['Test Notes'] = test_notes if test_notes.size > 0
     notes['Scenario Notes'] = scenario_notes if scenario_notes.size > 0
     notes['Error Notes'] = error_notes if error_notes.size > 0

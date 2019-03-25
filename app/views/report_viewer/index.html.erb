@@ -15,12 +15,12 @@
       <td><%= select_tag 'team_selector', options_from_collection_for_select(@teams, 'id', 'team_name', session[:team]) %></td>
       <td>
         <% @profiles.each do |team, profiles| %>
-        <div class="profile_selector" id="team_<%= team %>_profiles"
-             <% unless team.to_i.eql? session[:team].to_i %>style="display: none;"
-             <% end %>>
-          <%= select_tag "profile_team_#{team}", options_from_collection_for_select(profiles, 'id', 'profile_name', session[:profile]), include_blank: 'None' %>
-        </div>
-      <% end %>
+          <div class="profile_selector" id="team_<%= team %>_profiles"
+               <% unless team.to_i.eql? session[:team].to_i %>style="display: none;"
+               <% end %>>
+            <%= select_tag "profile_team_#{team}", options_from_collection_for_select(profiles, 'id', 'profile_name', session[:profile]), include_blank: 'None' %>
+          </div>
+        <% end %>
       </td>
       <td><%= submit_tag 'View Report' %></td>
     </tr>
@@ -53,25 +53,35 @@
             <td bgcolor="#32cd32">
               <div class="test_status">Passed</div>
               <div class="test_details">
-                <div>Duration: <%= test[:duration] %></div>
+                <div class="report_info_box">
+                  <div>Duration: <%= test[:duration] %></div>
+                </div>
               </div>
             </td>
           <% else %>
             <td bgcolor="red">
               <div class="test_status">Failed</div>
               <div class="test_details">
-                <div>Duration: <%= test[:duration] %></div>
-                <div><%= test[:error_message] %></div>
-                <% test[:notes].each do |note_for, notes| %>
-                  <div><%= note_for %></div>
-                  <% notes.each do |note| %>
-                    <div><%= note %></div>
-                    <div>-------------------</div>
+                <div class="report_info_box">
+                  <div>Duration: <%= test[:duration] %></div>
+                </div>
+                <div class="report_info_box">
+                  <div>Error Message:</div>
+                  </br>
+                  <div><%= test[:error_message] %></div>
+                </div>
+                <div class="report_info_box">
+                  <% test[:notes].each do |note_for, notes| %>
+                    <div><%= note_for %></div>
+                    <% notes.each do |note| %>
+                      <div><%= note %></div>
+                      <div>-------------------</div>
+                    <% end %>
                   <% end %>
-                <% end %>
+                </div>
                 <%= form_tag '/notes' do %>
-                  <%= hidden_field_tag :scenario, scenario_data[:scenarios_id] %>
-                  <%= hidden_field_tag :test, test[:test_id] %>
+                  <%= hidden_field_tag :scenario, scenario_data[:scenario_id] %>
+                  <%= hidden_field_tag :test, test[:id] %>
                   <%= hidden_field_tag :error_message, test[:error_message_id] %>
                   <%= text_area_tag :note %>
                   <%= select_tag :note_for, options_for_select(%w(Scenario Test Error)) %>
