@@ -2,8 +2,8 @@ class ReportViewerController < ApplicationController
   include ReportViewerHelper
 
   def index
-    @from_date = session[:from_date].nil? ? (Date.today - 30).to_datetime.strftime("%Y-%m-%d") : session[:from_date]
-    @to_date = session[:from_date].nil? ? Date.today.to_datetime.strftime("%Y-%m-%d") : session[:to_date]
+    @from_date = session[:from_date].nil? ? Date.today.to_datetime.strftime("%Y-%m-%d") : session[:from_date]
+    @to_date = session[:to_date].nil? ? (Date.today - 30).to_datetime.strftime("%Y-%m-%d") : session[:to_date]
     team_id = session[:team].nil? ? 1 : session[:team]
     @teams = Team.all
     @profiles = {}
