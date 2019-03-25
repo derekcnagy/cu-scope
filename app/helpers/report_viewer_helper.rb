@@ -1,9 +1,9 @@
 module ReportViewerHelper
   def build_report(team_id, profile_id, from_date, to_date)
     team_id = team_id.nil? ? 1 : team_id
-    from_date += " 00:00:00"
-    to_date += " 23:59:59"
-    test_runs = TestRun.where('time_ran Between ? and ?', from_date, to_date)
+    to_date += " 00:00:00"
+    from_date += " 23:59:59"
+    test_runs = TestRun.where('time_ran Between ? and ?', to_date, from_date)
     test_runs = TestRun.where(:id => test_runs.collect {|test_run| test_run.id},
                               team_id: team_id, profile_id: profile_id).order(time_ran: :desc)
     tests = IndividualTest.where :test_run_id => test_runs.collect {|test_run| test_run.id }

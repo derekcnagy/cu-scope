@@ -1,10 +1,12 @@
 module AnalyticsHelper
 
-  def most_failed_scenarios(team)
+  def most_failed_scenarios(team, from_date, to_date)
     most_failed_scenarios = {}
     scenarios = Scenario.where(feature: Feature.where(team: team))
     return most_failed_scenarios if scenarios.size.eql? 0
-    test_runs = TestRun.where('time_ran > ? ', (Date.today - 30).to_datetime)
+    to_date += " 00:00:00"
+    from_date += " 23:59:59"
+    test_runs = TestRun.where('time_ran Between ? and ?', to_date, from_date)
     scenarios.each do |scenario|
       test_count_total = IndividualTest.where(scenario: scenario, test_run: test_runs).size
       tests_count_failed = IndividualTest.where(scenario: scenario, test_run: test_runs, passed: false).size
@@ -15,12 +17,13 @@ module AnalyticsHelper
     most_failed_scenarios.sort_by {|_key, value| value[:test_fail_percent]}.reverse.to_h
   end
 
-  def longest_running_tests(team)
+  def longest_running_tests(team, from_date, to_date)
     scenario_durations = {}
     scenarios = Scenario.where(feature: Feature.where(team: team))
     return scenario_durations if scenarios.size.eql? 0
-
-    test_runs = TestRun.where('time_ran > ? ', (Date.today - 30).to_datetime)
+    to_date += " 00:00:00"
+    from_date += " 23:59:59"
+    test_runs = TestRun.where('time_ran Between ? and ?', to_date, from_date)
 
     durations = IndividualTest.where(scenario: scenarios, test_run: test_runs).collect{|test| test.duration}
     average_duration = durations.reduce(0, :+) / durations.size
@@ -35,12 +38,13 @@ module AnalyticsHelper
     scenario_durations.sort_by {|_key, value| value[:compared_to_average]}.reverse.to_h
   end
 
-  def most_common_errors(team)
+  def most_common_errors(team, from_date, to_date)
     most_common_errors = {}
     scenarios = Scenario.where(feature: Feature.where(team: team))
     return most_common_errors if scenarios.size.eql? 0
-
-    test_runs = TestRun.where('time_ran > ? ', (Date.today - 30).to_datetime)
+    to_date += " 00:00:00"
+    from_date += " 23:59:59"
+    test_runs = TestRun.where('time_ran Between ? and ?', to_date, from_date)
     error_messages = ErrorMessage.where(id: IndividualTest.where(scenario: scenarios, test_run: test_runs).collect { |test| test.error_message_id })
     error_messages.each do |error_message|
       error_count = IndividualTest.where(error_message_id: error_message.id, test_run: test_runs).size
