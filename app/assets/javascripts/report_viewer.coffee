@@ -15,3 +15,15 @@ $ ->
   $("#team_selector").on "change", ->
     $('.profile_selector').hide()
     $("#team_#{this.value}_profiles").show()
+
+  $(".add_note_button").on "click", ->
+    $(this).siblings('.note_form').show('slow')
+    $(this).hide('slow')
+
+  $(".cancel_add_note_button").on "click", ->
+    $(this).parent(".note_form").siblings(".add_note_button").show('slow')
+    $(this).parent(".note_form").hide('slow')
+
+  $(".save_note_button").on "click", ->
+    $(this).parents(".note_form").siblings(".add_note_button").show('slow')
+    $(this).parents(".note_form").hide('slow')

@@ -96,13 +96,19 @@
                     <% end %>
                   </div>
                 <% end %>
-                <%= form_tag '/notes' do %>
-                  <%= hidden_field_tag :scenario, scenario_data[:scenario_id] %>
-                  <%= hidden_field_tag :test, test[:id] %>
-                  <%= hidden_field_tag :error_message, test[:error_message_id] %>
-                  <%= text_area_tag :note %>
-                  <%= select_tag :note_for, options_for_select(%w(Scenario Test Error)) %>
-                  <%= submit_tag 'Add Note' %>
+                <% if @note_access %>
+                  <button class="add_note_button">Add Note</button>
+                  <div class="note_form">
+                    <%= form_tag '/notes' do %>
+                      <%= hidden_field_tag :scenario, scenario_data[:scenario_id] %>
+                      <%= hidden_field_tag :test, test[:id] %>
+                      <%= hidden_field_tag :error_message, test[:error_message_id] %>
+                      <%= select_tag :note_for, options_from_collection_for_select(@error_for_options, :first, :last) %>
+                      <%= text_area_tag :note %>
+                      <%= submit_tag 'Save Note', class: 'save_note_button' %>
+                    <% end %>
+                    <button class="cancel_add_note_button">Cancel</button>
+                  </div>
                 <% end %>
               </div>
             </td>

@@ -7,6 +7,10 @@ module SessionsHelper
 
   def log_out
     session.delete(:user_id)
+    session.delete(:username)
+    session.delete(:first_name)
+    session.delete(:last_name)
+    session.delete(:user_type)
     session[:profile] = nil
     session[:team] = 1
     update_to_from_dates
