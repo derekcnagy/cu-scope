@@ -2,6 +2,7 @@ class ReportViewerController < ApplicationController
   include ReportViewerHelper
 
   def index
+    @note_access = [1, 2, 3].include?(session[:user_type]) ? true : false
     @from_date = session[:from_date].nil? ? Date.today.to_datetime.strftime("%Y-%m-%d") : session[:from_date]
     @to_date = session[:to_date].nil? ? (Date.today - 30).to_datetime.strftime("%Y-%m-%d") : session[:to_date]
     team_id = session[:team].nil? ? 1 : session[:team]
@@ -13,6 +14,9 @@ class ReportViewerController < ApplicationController
     report = build_report(team_id, session[:profile], @from_date, @to_date)
     @test_run_times = report[:test_run_times]
     @test_data = report[:test_data]
+    @error_for_options = {test: 'Only this Test',
+                          scenario: 'Any test of this Scenario with this Error Message',
+                          error_message: 'Any test in this Project with this Error Message'}
   end
 
   def view_report

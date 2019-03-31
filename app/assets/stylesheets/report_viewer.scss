@@ -9,14 +9,99 @@ table {
   background-color: white;
 }
 
-.test_details {
+.feature_name, .scenario_name {
+  font-weight: bolder;
+}
+
+.test_details, .feature_details, .scenario_details{
   display:none;
 }
 
+.feature_details{
+  width: 200px;
+}
+
+.scenario_details{
+  width: 300px;
+}
+
 .report_info_box {
-  border: 1px solid black;
+  margin-bottom: 5px;
+  padding: 2px;
 }
 
 .info_title {
   border: 1px solid black;
+}
+
+.note_title_tests, .note_text_tests {
+  background-color: blue;
+}
+.note_title_scenarios, .note_text_scenarios {
+  background-color: blueviolet;
+}
+.note_title_errors, .note_text_errors {
+  background-color: violet;
+}
+
+.duration_title, .duration_details, .error_message_title, .error_message_details{
+  text-align: center;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+.duration_title, .error_message_title {
+  border-top: 1px solid black;
+}
+
+.note_title_tests, .note_title_scenarios, .note_title_errors {
+  text-align: center;
+  border: 1px solid black;
+}
+
+.note_text_tests, .note_text_scenarios, .note_text_errors{
+  border-bottom: 1px dashed black;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+}
+
+.last_note {
+  border-bottom: 1px solid black;
+}
+
+.test_status {
+  text-align: center;
+}
+
+.step_keyword {
+  color: green;
+  font-weight: bold;
+}
+
+.step_name, .step_keyword {
+  display: inline;
+}
+
+.error_message_title, .error_message_details {
+  background-color: #ff6666;
+}
+
+.duration_title, .duration_details {
+  background-color: lightgray;
+}
+
+.duration_title, .duration_details, .error_message_title, .error_message_details,
+.note_title_errors, .note_title_scenarios, .note_title_tests,
+.note_text_errors, .note_text_scenarios, .note_text_tests {
+  border-radius: 3px;
+}
+
+#note {
+  width: 300px;
+  height: 50px;
+}
+
+.note_form {
+  display: none;
 }

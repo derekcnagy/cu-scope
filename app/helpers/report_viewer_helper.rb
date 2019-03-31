@@ -6,7 +6,7 @@ module ReportViewerHelper
     test_runs = TestRun.where('time_ran Between ? and ?', to_date, from_date)
     test_runs = TestRun.where(:id => test_runs.collect {|test_run| test_run.id},
                               team_id: team_id, profile_id: profile_id).order(time_ran: :desc)
-    tests = IndividualTest.where :test_run_id => test_runs.collect {|test_run| test_run.id }
+    tests = IndividualTest.where :test_run_id => test_runs.collect {|test_run| test_run.id}
     scenarios = Scenario.where :id => tests.collect {|test| test.scenario_id}
     features = Feature.where :id => scenarios.collect {|scenario| scenario.feature_id}
 
@@ -43,10 +43,13 @@ module ReportViewerHelper
                        error_message_id: test[:error_message_id], error_message: error_message, notes: notes}
           scenario_tests.push test_info
         end
+
       end
-      data[scenario.json_scenario_id] = {scenario_id: scenario.id, scenario_name: scenario.scenario_name,
-                                         steps: scenario.steps, scenario_description: scenario.scenario_description,
-                                         scenario_tests: scenario_tests}
+      unless scenario_tests.compact.size.eql? 0
+        data[scenario.json_scenario_id] = {scenario_id: scenario.id, scenario_name: scenario.scenario_name,
+                                           steps: scenario.steps, scenario_description: scenario.scenario_description,
+                                           scenario_tests: scenario_tests}
+      end
     end
     data
   end
@@ -55,7 +58,7 @@ module ReportViewerHelper
     notes = {}
     test_notes = Note.where(individual_test_id: test_id).collect {|note| note.note}
     scenario_notes = Note.where(scenario_id: scenario_id, error_message_id: error_message_id).collect {|note| note.note}
-    error_notes = Note.where(scenario_id: nil, error_message_id: error_message_id).collect {|note| note.note}
+    error_notes = Note.where(individual_test_id: nil, scenario_id: nil, error_message_id: error_message_id).collect {|note| note.note}
     notes['Test Notes'] = test_notes if test_notes.size > 0
     notes['Scenario Notes'] = scenario_notes if scenario_notes.size > 0
     notes['Error Notes'] = error_notes if error_notes.size > 0
