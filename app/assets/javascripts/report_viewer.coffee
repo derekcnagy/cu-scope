@@ -2,7 +2,8 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-$ ->
+$(document).on 'turbolinks:load', ->
+
   $(".test_status").on "click", ->
     $(this).siblings('.test_details').toggle("slow")
 

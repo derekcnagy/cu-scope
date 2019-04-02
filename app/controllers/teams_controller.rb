@@ -30,6 +30,13 @@ class TeamsController < ApplicationController
       Feature.destroy feature[:id]
     end
 
+    Note.find_by(team_id: params[:team_id]).destroy_all
+
+    User.find_by(team_id: params[:team_id]).each do |user|
+      user.team_id = 1
+      user.save
+    end
+
     redirect_back(fallback_location: root_path)
   end
 end

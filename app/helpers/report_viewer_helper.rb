@@ -36,7 +36,7 @@ module ReportViewerHelper
           if test[:error_message_id].nil?
             error_message = nil
           else
-            error_message = ErrorMessage.where(id: test[:error_message_id]).first[:error_message]
+            error_message = test[:full_error_message]
             notes = note_data scenario.id, test[:id], test[:error_message_id]
           end
           test_info = {id: test[:id], passed: test[:passed], duration: test[:duration],
@@ -56,9 +56,25 @@ module ReportViewerHelper
 
   def note_data(scenario_id, test_id, error_message_id)
     notes = {}
-    test_notes = Note.where(individual_test_id: test_id).collect {|note| note.note}
-    scenario_notes = Note.where(scenario_id: scenario_id, error_message_id: error_message_id).collect {|note| note.note}
-    error_notes = Note.where(individual_test_id: nil, scenario_id: nil, error_message_id: error_message_id).collect {|note| note.note}
+    db_notes = Note.where(individual_test_id: test_id)
+    note_ids = db_notes.collect {|note| note.id}
+    test_notes = db_notes.collect {|note| note.note}
+    db_notes = Note.where(scenario_id: scenario_id, error_message_id: error_message_id)
+    note_ids += db_notes.collect {|note| note.id}
+    scenario_notes = db_notes.collect {|note| note.note}
+    db_notes = Note.where(individual_test_id: nil, scenario_id: nil, error_message_id: error_message_id)
+    note_ids += db_notes.collect {|note| note.id}
+    error_notes = db_notes.collect {|note| note.note}
+
+    test_run_time_ran = TestRun.find(IndividualTest.find(test_id).test_run_id).time_ran
+    note_ids.each do |id|
+      note = Note.find id
+      if test_run_time_ran > note.last_date_invoked
+        note.last_date_invoked = test_run_time_ran
+        note.save
+      end
+    end
+
     notes['Test Notes'] = test_notes if test_notes.size > 0
     notes['Scenario Notes'] = scenario_notes if scenario_notes.size > 0
     notes['Error Notes'] = error_notes if error_notes.size > 0

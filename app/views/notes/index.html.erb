@@ -1,0 +1,96 @@
+<h1>Notes</h1>
+
+<%= render "shared/menu" %>
+
+<%= form_tag('/notes/change_team_and_dates') do %>
+  <table>
+    <th>From Date</th>
+    <th>To Date</th>
+    <th>Team</th>
+    <th>View Analytics</th>
+    <tr>
+      <td><%= date_field_tag :from_date, @from_date %></td>
+      <td><%= date_field_tag :to_date, @to_date %></td>
+      <td><%= select_tag 'team', options_from_collection_for_select(@teams, 'id', 'team_name', session[:team]) %>
+      </td>
+      <td><%= submit_tag 'View Notes' %>
+      </td>
+    </tr>
+  </table>
+<% end %>
+
+<div id="note_for_scenarios">
+  <h3 id="note_for_scenarios_title">Notes for Scenarios</h3>
+  <table id="note_for_scenarios_table">
+    <th>Note</th>
+    <th>Feature</th>
+    <th>Scenario</th>
+    <th>Error Message</th>
+    <th>Last Date Invoked</th>
+    <th>Date Created</th>
+    <th>Delete</th>
+    <% @notes_for_scenario.each do |note| %>
+      <tr>
+        <td><%= note.note %></td>
+        <td><%= @scenarios[note.scenario_id][:feature] %></td>
+        <td><%= @scenarios[note.scenario_id][:scenario] %></td>
+        <td><%= @error_messages[note.error_message_id] %></td>
+        <td><%= note.last_date_invoked %></td>
+        <td><%= note.date_created %></td>
+        <%= form_tag note, method: :delete do %>
+          <td><%= submit_tag 'Delete' %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </table>
+</div>
+
+<div id="note_for_error_messages">
+  <h3 id="note_for_error_messages_title">Notes for Error Message</h3>
+  <table id="note_for_error_messages_table">
+    <th>Note</th>
+    <th>Error Message</th>
+    <th>Last Date Invoked</th>
+    <th>Date Created</th>
+    <th>Delete</th>
+    <% @notes_for_error_message.each do |note| %>
+      <tr>
+        <td><%= note.note %></td>
+        <td><%= @error_messages[note.error_message_id] %></td>
+        <td><%= note.last_date_invoked %></td>
+        <td><%= note.date_created %></td>
+        <%= form_tag note, method: :delete do %>
+          <td><%= submit_tag 'Delete' %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </table>
+</div>
+
+<div id="note_for_individual_test">
+  <h3 id="note_for_individual_test_title">Notes for Individual Test</h3>
+  <table id="note_for_individual_test_table">
+    <th>Note</th>
+    <th>Time Ran</th>
+    <th>Feature</th>
+    <th>Scenario</th>
+    <th>Error Message</th>
+    <th>Last Date Invoked</th>
+    <th>Date Created</th>
+    <th>Delete</th>
+    <% @notes_for_individual_test.each do |note| %>
+      <tr>
+        <td><%= note.note %></td>
+        <td><%= @individual_tests[note.individual_test_id][:time_ran] %></td>
+        <td><%= @individual_tests[note.individual_test_id][:feature] %></td>
+        <td><%= @individual_tests[note.individual_test_id][:scenario] %></td>
+        <td><%= @error_messages[note.error_message_id] %></td>
+        <td><%= note.last_date_invoked %></td>
+        <td><%= note.date_created %></td>
+        <%= form_tag note, method: :delete do %>
+          <td><%= submit_tag 'Delete' %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </table>
+</div>

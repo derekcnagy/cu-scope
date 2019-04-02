@@ -12,7 +12,7 @@ module AnalyticsHelper
       most_failed_scenarios[scenario.id] = {scenario_name: scenario.scenario_name,
                                              test_fail_percent: test_fail_percent}
     end
-    most_failed_scenarios.sort_by {|_key, value| value[:test_fail_percent]}.reverse.to_h
+    most_failed_scenarios.sort_by {|_key, value| value[:test_fail_percent]}.reverse.to_a
   end
 
   def longest_running_tests(team, from_date, to_date)
@@ -30,7 +30,7 @@ module AnalyticsHelper
       scenario_durations[scenario.id] = {scenario_name: scenario.scenario_name,
                                           duration: (duration.to_f / 1000000000.0).to_i, compared_to_average: compared_to_average}
     end
-    scenario_durations.sort_by {|_key, value| value[:compared_to_average]}.reverse.to_h
+    scenario_durations.sort_by {|_key, value| value[:compared_to_average]}.reverse.to_a
   end
 
   def most_common_errors(team, from_date, to_date)
@@ -46,7 +46,7 @@ module AnalyticsHelper
     end
 
 
-    most_common_errors.sort_by {|_key, value| value[:error_count]}.reverse.to_h
+    most_common_errors.sort_by {|_key, value| value[:error_count]}.reverse.to_a
   end
 
   def test_runs(to_date, from_date)

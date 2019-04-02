@@ -2,13 +2,13 @@
 
 <%= render "shared/menu" %>
 
-<table>
-  <th>From Date</th>
-  <th>To Date</th>
-  <th>Team</th>
-  <th>Profile</th>
-  <th>View Report</th>
-  <%= form_tag('/report_viewer/view_report') do %>
+<%= form_tag('/report_viewer/view_report') do %>
+  <table>
+    <th>From Date</th>
+    <th>To Date</th>
+    <th>Team</th>
+    <th>Profile</th>
+    <th>View Report</th>
     <tr>
       <td><%= date_field_tag :from_date, @from_date %></td>
       <td><%= date_field_tag :to_date, @to_date %></td>
@@ -24,9 +24,9 @@
       </td>
       <td><%= submit_tag 'View Report' %></td>
     </tr>
-  <% end %>
+  </table>
+<% end %>
 
-</table>
 <table>
   <th>Features</th>
   <th>Scenarios</th>

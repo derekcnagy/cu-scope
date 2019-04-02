@@ -91,34 +91,42 @@ module FileUploaderHelper
       end
     end
 
-
     tests = IndividualTest.new
     tests.passed = pass
     tests.duration = duration
     tests.test_run = test_runs
     tests.scenario = scenarios
     unless error_message.nil?
-      errors = store_error_message error_message
-      tests.error_message = errors
+      errors_message_data = store_error_message error_message
+      tests.error_location = errors_message_data[:error_location]
+      tests.full_error_message = errors_message_data[:full_error_message]
+      tests.error_message = errors_message_data[:error_message]
     end
     tests.save
     tests
   end
 
   def store_error_message(error_message)
+    error_message_data = {full_error_message: error_message}
     message = ''
+    error_location = ''
     error_message.split("\n").each do |error|
-      unless error.empty? or error[0,2].eql? './'
+      if error[0, 2].eql? './'
+        error_location += "#{error}\n"
+      elsif !error.empty?
         message += "#{error}\n"
       end
     end
-    errors = ErrorMessage.find_by error_message: message
+    scrubbed_message = scrub_error_message(message)
+    error_message_data[:error_location] = error_location
+    errors = ErrorMessage.find_by error_message: scrubbed_message
     if errors.nil?
       errors = ErrorMessage.new
-      errors.error_message = message
+      errors.error_message = scrub_error_message(scrubbed_message)
       errors.save
     end
-    errors
+    error_message_data[:error_message] = errors
+    error_message_data
   end
 
   def extract_steps(steps_data)
@@ -146,5 +154,9 @@ module FileUploaderHelper
     unless current_data.feature_description.eql? new_description
       Feature.update(current_data.id, feature_description: new_description)
     end
+  end
+
+  def scrub_error_message(message)
+    message.gsub /#<String:[0-9]+>/, '#<String>'
   end
 end

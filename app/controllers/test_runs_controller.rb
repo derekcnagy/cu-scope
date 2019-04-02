@@ -16,7 +16,10 @@ class TestRunsController < ApplicationController
 
   def destroy
     TestRun.destroy params[:id]
-    IndividualTest.where(test_run_id: params[:id]).destroy_all
+    IndividualTest.where(test_run_id: params[:id]).each do |individual_test|
+      Note.find_by(individual_test_id: individual_test.id).destroy_all
+      IndividualTest.destroy individual_test.id
+    end
     redirect_back(fallback_location: root_path)
   end
 end

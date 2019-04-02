@@ -6,6 +6,7 @@
     <%= link_to 'Teams', :controller => :teams, :action => :index %>
     <%= link_to 'Profiles', :controller => :profiles, :action => :index %>
     <%= link_to 'Test Runs', :controller => :test_runs, :action => :index %>
+    <%= link_to 'Notes', :controller => :notes, :action => :index %>
     <% if session[:user_type].eql? 1 %>
       <%= link_to 'Users', :controller => :users, :action => :index %>
     <% end %>

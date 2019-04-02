@@ -1,5 +1,7 @@
+require 'pagy/extras/array'
 class AnalyticsController < ApplicationController
   include AnalyticsHelper
+  include Pagy::Backend
 
   def index
     team_id = session[:team].nil? ? 1 : session[:team]
