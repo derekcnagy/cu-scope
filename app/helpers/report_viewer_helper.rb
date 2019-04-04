@@ -10,7 +10,7 @@ module ReportViewerHelper
     scenarios = Scenario.where :id => tests.collect {|test| test.scenario_id}
     features = Feature.where :id => scenarios.collect {|scenario| scenario.feature_id}
 
-    test_run_times = test_runs.collect {|test_run| test_run.time_ran.strftime "%m/%d/%Y %H:%M:%S"}
+    test_run_times = test_runs.collect {|test_run| test_run.time_ran.strftime "%A %m/%d/%Y %H:%M:%S"}
 
     test_data = {}
     features.each do |feature|

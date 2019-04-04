@@ -2,7 +2,7 @@
 <%= render "shared/menu" %>
 
 <%= form_tag('/report_viewer/view_report') do %>
-  <table>
+  <table id="report_options">
     <th>From Date</th>
     <th>To Date</th>
     <th>Team</th>
@@ -30,7 +30,11 @@
   <th>Features</th>
   <th>Scenarios</th>
   <% @test_run_times.each do |time| %>
-    <th><%= time %></th>
+    <th>
+      <% time.split(' ').each do |time_component| %>
+        <div><%= time_component %></div>
+      <% end %>
+    </th>
   <% end %>
   <% @test_data.each do |feature_json_id, feature_data| %>
     <tr>

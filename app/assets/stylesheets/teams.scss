@@ -2,8 +2,37 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#exiting_team_name{
-  border: 2px solid black;
-  width: 100px;
+#teams_table{
+  margin-bottom: 1%;
+}
+
+#teams_table input[type=text] {
+  padding: 5px;
+}
+
+#teams_table input[type=submit] {
+  padding: 5px 25px;
+}
+
+#new_team_name {
+  border-radius: 10px;
+  padding: 5px;
+  width: 24%;
+}
+
+#new_team_submit{
   background-color: white;
+  color: black;
+  padding: 5px 10px;
+  margin-left: 0;
+  margin-right: 0;
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+  border: 1px solid black;
+  border-radius: 20px;
+}
+
+#new_team_submit:hover {
+  background-color: lawngreen;
 }

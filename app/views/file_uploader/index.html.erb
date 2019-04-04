@@ -2,7 +2,6 @@
 <div id="wait_overlay"><img src="assets/loading.gif"></div>
 
 <%= render "shared/menu" %>
-<div>Files Waiting to Process:</div>
 <table id="files_to_process_list">
   <th>File Name</th>
   <th>Time Ran</th>
@@ -37,8 +36,6 @@
   <% end %>
   </tr>
 </table>
-</br>
-</br>
 
 <div id="files_to_upload">
   <%= form_tag('/file_uploader/upload', method: :put, multipart: true) do %>

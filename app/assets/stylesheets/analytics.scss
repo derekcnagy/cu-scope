@@ -10,3 +10,14 @@
   width: 50%;
   float: right;
 }
+
+#analytics_options select{
+  padding: 5px;
+}
+
+#analytics_options input[type=submit]{
+  padding: 5px 10px;
+}
+#analytics_options input[type=date]{
+  padding: 3px;
+}
