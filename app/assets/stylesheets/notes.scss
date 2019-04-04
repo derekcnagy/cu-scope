@@ -1,3 +1,29 @@
 // Place all the styles related to the Notes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#note_for_scenarios_title, #note_for_error_messages_title, #note_for_individual_test_title {
+  border: 1px solid black;
+  margin-bottom: 0px;
+  text-align: center;
+}
+
+#note_for_individual_test, #note_for_scenarios, #note_for_error_messages {
+  background-color: white;
+}
+
+#note_for_individual_test_title, #note_for_individual_test_table {
+  //background-color: blue;
+  background-color: rgba(0,0,255,.5);
+}
+
+#note_for_scenarios_title, #note_for_scenarios_table {
+  //background-color: blueviolet;
+  background-color: rgba(138,43,226,.5);
+
+}
+
+#note_for_error_messages_title, #note_for_error_messages_table {
+  //background-color: violet;
+  background-color: rgba(238,130,238,.5);
+}

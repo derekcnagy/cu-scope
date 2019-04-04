@@ -1,0 +1,11 @@
+<div id="header">
+  <div id="logo"><img src="assets/logo.png"></div>
+
+  <div id="log_in_out">
+    <% if session[:user_id].nil? %>
+      <button id="login_button">Login</button>
+    <% else %>
+      <%= link_to "Log out", login_sessions_path, method: :delete %>
+    <% end %>
+  </div>
+</div>

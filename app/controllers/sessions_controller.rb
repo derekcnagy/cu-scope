@@ -8,8 +8,8 @@ class SessionsController < ApplicationController
       log_in user
       redirect_to root_url
     else
-      flash.alert = 'Invalid email/password combination'
-      render 'index'
+      flash.alert = 'login error'
+      redirect_back(fallback_location: root_path)
     end
   end
 

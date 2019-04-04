@@ -2,9 +2,14 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-$ ->
+$(document).on 'turbolinks:load', ->
+
+  $('#wait_overlay').hide()
+
   $(".team_selector").on "change", ->
-#    $(this).parents('tr').find('input').hide()
     $(this).parents('tr').find('td div.profile_selector').hide()
-#    $('#test_two').text "team_#{this.value}_profiles"
     $(this).parents('tr').find("td div#team_#{this.value}_profiles").show()
+
+  $('.process_file_button').on 'click', ->
+    $('#wait_overlay').show()
+

@@ -2,6 +2,7 @@ class UserSettingsController < ApplicationController
   include UserSettingsHelper
 
   def index
+    @current_page = :settings
     @user = User.find session[:user_id]
     @teams = Team.all
     @profiles = {}

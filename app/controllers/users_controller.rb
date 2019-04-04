@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
   def index
+    @current_page = :users
     @teams = Team.all
     @users = User.all
     @user_types = UserType.all

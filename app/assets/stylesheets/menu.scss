@@ -1,0 +1,27 @@
+// Place all the styles related to the NewUser controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#menu {
+  margin-bottom: 25px;
+}
+
+.menu_link {
+  background-color: white;
+  color: black;
+  padding: 14px 25px;
+  margin-left: 0;
+  margin-right: 0;
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+  border: 1px solid black;
+}
+
+.current_page {
+  background-color: green;
+}
+
+.menu_link:hover {
+  background-color: green;
+}

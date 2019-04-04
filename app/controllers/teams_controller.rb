@@ -1,6 +1,7 @@
 class TeamsController < ApplicationController
 
   def index
+    @current_page = :teams
     @teams = Team.where.not(id: 1)
   end
 
@@ -28,6 +29,13 @@ class TeamsController < ApplicationController
     Feature.where(team_id: params[:team_id]).each do |feature|
       Scenario.where(feature_id: feature[:id]).destroy_all
       Feature.destroy feature[:id]
+    end
+
+    Note.find_by(team_id: params[:team_id]).destroy_all
+
+    User.find_by(team_id: params[:team_id]).each do |user|
+      user.team_id = 1
+      user.save
     end
 
     redirect_back(fallback_location: root_path)

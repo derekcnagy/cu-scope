@@ -1,0 +1,55 @@
+<div id="login_overlay">
+
+  <div id="login_container">
+    <div id="user_login">
+      <div id="login_error">Invalid username/password combination</div>
+
+      <%= form_tag('/sessions/login') do %>
+        <div>Username: <%= text_field_tag :username, '', required: true %></div>
+        <div>Password: <%= password_field_tag :password, '', required: true %></div>
+        <%= submit_tag "Login" %>
+      <% end %>
+      <div>
+        <button id="create_account_button">Create Account</button>
+      </div>
+      <div>
+        <button id="cancel_login">Cancel</button>
+      </div>
+    </div>
+    <div id="create_account">
+      <%= form_tag('/new_user', onsubmit: "validate_new_user_form", id: 'create_account_form') do %>
+        <div id="passwords_not_match_error" class="create_user_error">Passwords Don't Match</div>
+        <div id="username_used_error" class="create_user_error">Username Already Used</div>
+        <div id="user_not_created_error" class="create_user_error">User Not Created</div>
+        <div>Username: <%= text_field_tag :username, '', required: true %></div>
+        <div>First Name: <%= text_field_tag :first_name, '', required: true %></div>
+        <div>Last Name: <%= text_field_tag :last_name, '', required: true %></div>
+        <div>Password: <%= password_field_tag :password, '', required: true, id: 'create_user_password' %></div>
+        <div>Confirm Password: <%= password_field_tag :password_confirmation, '', required: true %></div>
+        <div>Team: <%= select_tag "team", options_from_collection_for_select(@teams, 'id', 'team_name') %></div>
+        <%= submit_tag "Create Account", id: 'create_account_submit' %>
+      <% end %>
+      <button id="cancel_create_account_button">Cancel</button>
+    </div>
+  </div>
+</div>
+<% if flash.alert.eql? 'login error' %>
+  <script>
+      $('#login_overlay').show();
+      $('#login_error').show();
+  </script>
+<% elsif flash.alert.eql? 'username used' %>
+  <script>
+      $('#login_overlay').show();
+      $('#user_login').hide();
+      $('#create_account').show();
+      $('#username_used_error').show();
+  </script>
+<% elsif flash.alert.eql? 'user not created' %>
+  <script>
+      $('#login_overlay').show();
+      $('#user_login').hide();
+      $('#create_account').show();
+      $('#user_not_created_error').show();
+  </script>
+<% end %>

@@ -1,0 +1,61 @@
+// Place all the styles related to the NewUser controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#login_overlay {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.9);
+  overflow-x: hidden;
+  transition: 0.5s;
+  display: none;
+}
+
+#login_container {
+  margin-left: 30%;
+  margin-top: 200px;
+  background-color: greenyellow;
+  width: 40%;
+  padding: 50px;
+  text-align: right;
+  border-radius: 20px;
+}
+
+#login_container form {
+  width: 400px
+}
+
+#create_account_button {
+  margin-right: 30%;
+}
+
+#create_account {
+  display: none;
+}
+
+.create_user_error {
+  background-color: red;
+  color: white;
+  padding: 10px;
+  margin-left: 40%;
+  text-align: center;
+  border-radius: 10px;
+  border: black solid 1px;
+  display: none;
+}
+
+#login_error {
+  background-color: red;
+  color: white;
+  padding: 10px;
+  margin-left: 10%;
+  text-align: center;
+  border-radius: 10px;
+  border: black solid 1px;
+  display: none;
+}

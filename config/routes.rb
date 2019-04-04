@@ -8,7 +8,11 @@ Rails.application.routes.draw do
   end
   resources :teams
   resources :profiles
-  resources :notes
+  resources :notes do
+    collection do
+      post 'change_team_and_dates', to: 'notes#change_team_and_dates'
+    end
+  end
   resources :user_settings do
     collection do
       put 'change_password', to: 'user_settings#change_password'

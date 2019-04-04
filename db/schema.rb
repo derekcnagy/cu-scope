@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_06_051251) do
+ActiveRecord::Schema.define(version: 2019_04_01_215607) do
 
   create_table "error_messages", force: :cascade do |t|
     t.string "error_message", null: false
@@ -30,6 +30,8 @@ ActiveRecord::Schema.define(version: 2019_03_06_051251) do
     t.integer "test_run_id", null: false
     t.integer "scenario_id", null: false
     t.integer "error_message_id"
+    t.string "error_location"
+    t.string "full_error_message"
     t.index ["error_message_id"], name: "index_individual_tests_on_error_message_id"
     t.index ["scenario_id"], name: "index_individual_tests_on_scenario_id"
     t.index ["test_run_id"], name: "index_individual_tests_on_test_run_id"
@@ -42,6 +44,8 @@ ActiveRecord::Schema.define(version: 2019_03_06_051251) do
     t.integer "individual_test_id"
     t.integer "team_id"
     t.integer "user_id", null: false
+    t.datetime "date_created"
+    t.datetime "last_date_invoked"
     t.index ["error_message_id"], name: "index_notes_on_error_message_id"
     t.index ["individual_test_id"], name: "index_notes_on_individual_test_id"
     t.index ["scenario_id"], name: "index_notes_on_scenario_id"

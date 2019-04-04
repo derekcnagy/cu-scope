@@ -1,13 +1,13 @@
-<h1>Analytics</h1>
-
+<%= render 'shared/header' %>
+<%= render "shared/login_overlay" %>
 <%= render "shared/menu" %>
 
-<table>
-  <th>From Date</th>
-  <th>To Date</th>
-  <th>Team</th>
-  <th>View Analytics</th>
-  <%= form_tag('/analytics/change_team_and_dates') do %>
+<%= form_tag('/analytics/change_team_and_dates') do %>
+  <table>
+    <th>From Date</th>
+    <th>To Date</th>
+    <th>Team</th>
+    <th>View Analytics</th>
     <tr>
       <td><%= date_field_tag :from_date, @from_date %></td>
       <td><%= date_field_tag :to_date, @to_date %></td>
@@ -16,8 +16,8 @@
       <td><%= submit_tag 'View Analytics' %>
       </td>
     </tr>
-  <% end %>
-</table>
+  </table>
+<% end %>
 
 <h2 class="most_failed_scenario">Most Failed Scenarios</h2>
 <h2 class="longest_running_test">Longest Running Tests</h2>

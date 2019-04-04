@@ -3,11 +3,27 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 #files_to_process_list {
-  //border: 2px solid black;
-  //width: 675px;
   padding: 2px;
 }
 
 #upload {
 background-color: white;
+}
+
+#wait_overlay{
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0, 0.9);
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+#wait_overlay img{
+  margin-left: 40%;
+  margin-top: 200px;
 }
