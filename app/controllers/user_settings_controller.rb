@@ -17,10 +17,10 @@ class UserSettingsController < ApplicationController
     status = update_password(user: user, old_password: params[:old_password], new_password: params[:new_password],
                        password_confirmation: params[:password_confirmation])
     if status
-      flash.alert = 'Password Changed'
+      flash.notice = 'Password Changed'
       redirect_back(fallback_location: root_path)
     else
-      flash.alert = 'Invalid email/password combination'
+      flash.alert = 'Invalid Password'
       redirect_back(fallback_location: root_path)
     end
   end

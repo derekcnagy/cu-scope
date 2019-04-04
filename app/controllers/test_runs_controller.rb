@@ -5,13 +5,13 @@ class TestRunsController < ApplicationController
     @current_page = :test_runs
     @pagy_test_runs, @test_runs = pagy(TestRun.all.order(time_ran: :desc))
 
-    @teams = {}
+    @teams_list = {}
     Team.all.each do |team|
-      @teams[team.id] = team.team_name
+      @teams_list[team.id] = team.team_name
     end
-    @profiles = {}
+    @profiles_list = {}
     Profile.all.each do |profile|
-      @profiles[profile.id] = profile.profile_name
+      @profiles_list[profile.id] = profile.profile_name
     end
   end
 

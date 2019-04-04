@@ -59,3 +59,55 @@
   border: black solid 1px;
   display: none;
 }
+
+
+
+
+#login_submit, #create_account_submit{
+  background-color: white;
+  color: black;
+  padding: 10px 100px;
+  margin-left: 0;
+  margin-right: 0;
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+  border: 1px solid black;
+  border-radius: 20px;
+}
+
+#create_account_button{
+  background-color: white;
+  color: black;
+  padding: 10px 68px;
+  margin-left: 0;
+  margin-right: 30%;
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+  border: 1px solid black;
+  border-radius: 20px;
+}
+
+#cancel_create_account_button, #cancel_login{
+  background-color: white;
+  color: black;
+  padding: 10px 30px;
+  margin-left: 0;
+  margin-right: 0;
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+  border: 1px solid black;
+  border-radius: 20px;
+}
+#login_submit:hover {
+  background-color: lawngreen;
+}
+
+#create_account_button:hover, #create_account_submit:hover {
+  background-color: lightgreen;
+}
+#cancel_create_account_button:hover, #cancel_login:hover {
+  background-color: red;
+}

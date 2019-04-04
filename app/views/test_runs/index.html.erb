@@ -1,5 +1,4 @@
 <%= render 'shared/header' %>
-<%= render "shared/login_overlay" %>
 <%= render "shared/menu" %>
 
 <div>Test Runs</div>
@@ -16,10 +15,10 @@
         <td><%= text_field_tag :test_run_name, test_run[:test_run_name], readonly: true %></td>
         <td><%= text_field_tag :time_ran, test_run[:time_ran], readonly: true %></td>
         <td>
-          <%= @teams[test_run[:team_id]] %>
+          <%= @teams_list[test_run[:team_id]] %>
         </td>
         <td>
-          <%= @profiles[test_run[:profile_id]] %>
+          <%= @profiles_list[test_run[:profile_id]] %>
         </td>
       <% end %>
       <%= form_tag test_run, method: :delete do %>

@@ -1,32 +1,40 @@
 <%= render 'shared/header' %>
-<%= render "shared/login_overlay" %>
 <%= render "shared/menu" %>
 
-<% if flash[:alert] %>
-  <div class="alert"><%= flash[:alert] %></div>
-<% end %>
-<%= form_tag @user, method: :patch do %>
-  <%= hidden_field_tag :id, session[:user_id] %>
-  <%= hidden_field_tag :user_type, session[:user_type] %>
-  <div><%= text_field_tag :username, session[:username] %></div>
-  <div><%= text_field_tag :first_name, session[:first_name] %></div>
-  <div><%= text_field_tag :last_name, session[:last_name] %></div>
-  <div><%= text_field_tag :user_type_name, @user_type.type_name, readonly: true %></div>
-  <%= hidden_field_tag :user_type, @user_type.id %>
-  <div><%= select_tag 'team_selector', options_from_collection_for_select(@teams, 'id', 'team_name', session[:team]) %></div>
+<div id="user_settings">
+  <%= form_tag @user, method: :patch do %>
+    <%= hidden_field_tag :id, session[:user_id] %>
+    <%= hidden_field_tag :user_type, session[:user_type] %>
+    <div>Username <%= text_field_tag :username, session[:username] %></div>
+    <div>First Name <%= text_field_tag :first_name, session[:first_name] %></div>
+    <div>Last Name <%= text_field_tag :last_name, session[:last_name] %></div>
+    <div>User Type <%= text_field_tag :user_type_name, @user_type.type_name, readonly: true %></div>
+    <%= hidden_field_tag :user_type, @user_type.id %>
+    <div>Team <%= select_tag 'team_selector', options_from_collection_for_select(@teams, 'id', 'team_name', session[:team]) %></div>
     <% @profiles.each do |team, profiles| %>
       <div class="profile_selector" id="team_<%= team %>_profiles"
            <% unless team.to_i.eql? session[:team].to_i %>style="display: none;"
            <% end %>>
+        Default Profile
         <%= select_tag "profile_team_#{team}", options_from_collection_for_select(profiles, 'id', 'profile_name', session[:profile]), include_blank: 'None' %>
       </div>
     <% end %>
-  <div><%= submit_tag 'Update' %></div>
-<% end %>
+    <div><%= submit_tag 'Update', id: 'update_user_submit' %></div>
+  <% end %>
 
-<%= form_tag '/user_settings/change_password', method: :put do %>
-  <div>Old Password: <%= password_field_tag :old_password %></div>
-  <div>New Password: <%= password_field_tag :new_password %></div>
-  <div>Confirm Password: <%= password_field_tag :password_confirmation %></div>
-  <%= submit_tag "Change Password" %>
-<% end %>
+  <div id="change_password_container">
+    <%= form_tag '/user_settings/change_password', method: :put, onsubmit: "validate_new_password_form", id: 'change_password_form' do %>
+      <div id="new_passwords_not_match_error">Passwords Don't Match</div>
+      <% if flash[:alert] %>
+        <div id="user_settings_alert"><%= flash[:alert] %></div>
+      <% end %>
+      <% if flash[:notice] %>
+        <div id="user_settings_notice"><%= flash[:notice] %></div>
+      <% end %>
+      <div>Old Password: <%= password_field_tag :old_password, '', required: true %></div>
+      <div>New Password: <%= password_field_tag :new_password, '', required: true, id: 'change_password_new_password' %></div>
+      <div>Confirm Password: <%= password_field_tag :password_confirmation, '', required: true, id: 'change_password_password_confirmation' %></div>
+      <%= submit_tag "Change Password", id: 'change_password_submit' %>
+    <% end %>
+  </div>
+</div>
