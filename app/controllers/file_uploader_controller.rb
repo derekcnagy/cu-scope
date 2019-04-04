@@ -4,6 +4,8 @@ class FileUploaderController < ApplicationController
   include FileUploaderHelper
 
   def index
+    @current_page = :add_reports
+
     directory_path = 'public/report_jsons/'
     files = Dir["#{directory_path}*"]
     files.collect! {|file_name| file_name.gsub directory_path, ''}

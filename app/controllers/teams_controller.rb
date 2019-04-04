@@ -1,6 +1,7 @@
 class TeamsController < ApplicationController
 
   def index
+    @current_page = :teams
     @teams = Team.where.not(id: 1)
   end
 

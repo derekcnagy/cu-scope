@@ -4,6 +4,7 @@ class AnalyticsController < ApplicationController
   include Pagy::Backend
 
   def index
+    @current_page = :analytics
     team_id = session[:team].nil? ? 1 : session[:team]
     team = Team.find team_id
 

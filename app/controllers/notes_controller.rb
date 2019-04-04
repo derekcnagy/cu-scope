@@ -2,8 +2,8 @@ class NotesController < ApplicationController
   include Pagy::Backend
 
   def index
+    @current_page = :notes
     team_id = session[:team].nil? ? 1 : session[:team]
-    team = Team.find team_id
 
     @teams = Team.all
     @from_date = session[:from_date].nil? ? Date.today.to_datetime.strftime("%Y-%m-%d") : session[:from_date]
@@ -18,10 +18,6 @@ class NotesController < ApplicationController
     Scenario.where('id in (?)', @notes_for_scenario.collect {|note| note.scenario_id}).each do |scenario|
       feature = Feature.find scenario.feature_id
       @scenarios[scenario.id] = {feature: feature.feature_name, scenario: scenario.scenario_name}
-      puts scenario.id
-      puts scenario.scenario_name
-      puts feature.feature_name
-      puts '---------------'
     end
     @individual_tests = {}
     IndividualTest.where('id in (?)', @notes_for_individual_test.collect {|note| note.individual_test_id}).each do |individual_test|

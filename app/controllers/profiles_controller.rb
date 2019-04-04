@@ -1,5 +1,6 @@
 class ProfilesController < ApplicationController
   def index
+    @current_page = :profiles
     @profiles = Profile.all.order(:team_id)
     @teams = Team.all
     @team_names = {}

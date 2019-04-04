@@ -4,12 +4,12 @@
 
 $(document).on 'turbolinks:load', ->
 
-  $('#overlay').hide()
+  $('#wait_overlay').hide()
 
   $(".team_selector").on "change", ->
     $(this).parents('tr').find('td div.profile_selector').hide()
     $(this).parents('tr').find("td div#team_#{this.value}_profiles").show()
 
   $('.process_file_button').on 'click', ->
-    $('#overlay').show()
+    $('#wait_overlay').show()
 

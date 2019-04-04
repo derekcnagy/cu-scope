@@ -2,6 +2,7 @@ class ReportViewerController < ApplicationController
   include ReportViewerHelper
 
   def index
+    @current_page = :reports
     @note_access = [1, 2, 3].include?(session[:user_type]) ? true : false
     @from_date = session[:from_date].nil? ? Date.today.to_datetime.strftime("%Y-%m-%d") : session[:from_date]
     @to_date = session[:to_date].nil? ? (Date.today - 30).to_datetime.strftime("%Y-%m-%d") : session[:to_date]

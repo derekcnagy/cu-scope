@@ -3,8 +3,6 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 #files_to_process_list {
-  //border: 2px solid black;
-  //width: 675px;
   padding: 2px;
 }
 
@@ -12,7 +10,7 @@
 background-color: white;
 }
 
-#overlay{
+#wait_overlay{
   height: 100%;
   width: 100%;
   position: fixed;
@@ -25,7 +23,7 @@ background-color: white;
   transition: 0.5s;
 }
 
-#overlay img{
+#wait_overlay img{
   margin-left: 40%;
   margin-top: 200px;
 }

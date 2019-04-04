@@ -1,0 +1,20 @@
+// Place all the styles related to the NewUser controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#header {
+  display: inline-block;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+#logo img {
+  width: 15%;
+  display: inline;
+  float: left;
+}
+
+#log_in_out {
+  display: inline;
+  float: right;
+}

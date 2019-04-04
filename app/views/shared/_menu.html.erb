@@ -1,21 +1,17 @@
-<%= link_to 'Report', :controller => :report_viewer, :action => :index %>
-<%= link_to 'Analytics', :controller => :analytics, :action => :index %>
-<% unless session[:user_id].nil? %>
-  <% unless session[:user_type].eql? 4 %>
-    <%= link_to 'Add Report', :controller => :file_uploader, :action => :index %>
-    <%= link_to 'Teams', :controller => :teams, :action => :index %>
-    <%= link_to 'Profiles', :controller => :profiles, :action => :index %>
-    <%= link_to 'Test Runs', :controller => :test_runs, :action => :index %>
-    <%= link_to 'Notes', :controller => :notes, :action => :index %>
-    <% if session[:user_type].eql? 1 %>
-      <%= link_to 'Users', :controller => :users, :action => :index %>
+<div id="menu">
+  <%= link_to 'Reports', {:controller => :report_viewer, :action => :index}, id: 'reports_link', class: "menu_link #{'current_page' if @current_page.eql? :reports}" %>
+  <%= link_to 'Analytics', {:controller => :analytics, :action => :index}, id: 'analytics_link', class: "menu_link #{'current_page' if @current_page.eql? :analytics}" %>
+  <% unless session[:user_id].nil? %>
+    <% unless session[:user_type].eql? 3 %>
+      <%= link_to 'Add Report', {:controller => :file_uploader, :action => :index}, id: 'add_report_link', class: "menu_link #{'current_page' if @current_page.eql? :add_reports}" %>
+      <%= link_to 'Teams', {:controller => :teams, :action => :index}, id: 'teams_link', class: "menu_link #{'current_page' if @current_page.eql? :teams}" %>
+      <%= link_to 'Profiles', {:controller => :profiles, :action => :index}, id: 'profiles_link', class: "menu_link #{'current_page' if @current_page.eql? :profiles}" %>
+      <%= link_to 'Test Runs', {:controller => :test_runs, :action => :index}, id: 'test_runs_link', class: "menu_link #{'current_page' if @current_page.eql? :test_runs}" %>
+      <%= link_to 'Notes', {:controller => :notes, :action => :index}, id: 'notes_link', class: "menu_link #{'current_page' if @current_page.eql? :notes}" %>
+      <% if session[:user_type].eql? 1 %>
+        <%= link_to 'Users', {:controller => :users, :action => :index}, id: 'users_link', class: "menu_link #{'current_page' if @current_page.eql? :users}" %>
+      <% end %>
     <% end %>
-    <%= link_to 'Settings', :controller => :user_settings, :action => :index %>
+    <%= link_to 'Settings', {:controller => :user_settings, :action => :index}, id: 'settings_link', class: "menu_link #{'current_page' if @current_page.eql? :settings}" %>
   <% end %>
-<% end %>
-
-<% if session[:user_id].nil? %>
-  <%= link_to 'Login', :controller => :sessions, :action => :index %>
-<% else %>
-  <%= link_to "Log out", login_sessions_path, method: :delete %>
-<% end %>
+</div>

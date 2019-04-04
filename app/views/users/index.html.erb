@@ -1,6 +1,7 @@
-<h1>Users</h1>
-
+<%= render 'shared/header' %>
+<%= render "shared/login_overlay" %>
 <%= render "shared/menu" %>
+
 <% if flash[:alert] %>
   <div class="alert"><%= flash[:alert] %></div>
 <% end %>
