@@ -1,18 +1,18 @@
 # Reports
 
 ### Report Filter
-##### From Date
-Filter out test runs after this date. 
-Defaults to todays date.  
-##### To Date
-Filter out test runs before this date.
-Defaults to 30 days ago.
-##### Team Date
-Will only pull test runs from selected team.
-Defaults to the user's team, or no team.
-##### Profile Date
-Will only pull test runs from selected profile.
-Defaults to the user's selected defualt profile team, or no profile.
+  ##### From Date
+    Filter out test runs after this date. 
+    Defaults to todays date.  
+  ##### To Date
+    Filter out test runs before this date.
+    Defaults to 30 days ago.
+  ##### Team Date
+    Will only pull test runs from selected team.
+    Defaults to the user's team, or no team.
+  ##### Profile Date
+    Will only pull test runs from selected profile.
+    Defaults to the user's selected defualt profile team, or no profile.
 
 ### Report
 ##### Features
