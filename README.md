@@ -7,10 +7,10 @@
   ##### To Date
     Filter out test runs before this date.
     Defaults to 30 days ago.
-  ##### Team Date
+  ##### Team
     Will only pull test runs from selected team.
     Defaults to the user's team, or no team.
-  ##### Profile Date
+  ##### Profile
     Will only pull test runs from selected profile.
     Defaults to the user's selected defualt profile team, or no profile.
 
@@ -39,6 +39,37 @@
 
 
 # Analytics
+### Analytics Filter
+  ##### From Date
+    Filter out data from test runs after this date. 
+    Defaults to todays date.  
+  ##### To Date
+    Filter out data from test runs before this date.
+    Defaults to 30 days ago.
+  ##### Team
+    Will only pull data from selected team.
+    Defaults to the user's team, or no team.
+    
+### Most Failed Scenarios
+  List all the scenarios for selected team and show how often they fail. Ordered failing most offten to lest offten.
+  ##### Scenario
+    Name of the scenario
+  ##### Failed Percent
+    How often the scenario fails as a percentage. The more offten the scenario fails the redder this becomes.
+### Longest Running Tests
+  List all the scenarios for selected team and show how long they they run on average and how that compares to average of all the teams scenarios. Ordered longest running to shortest running.
+  ##### Scenario
+    Name of the scenario
+  ##### Duration
+    How long the scenario runs on average, in seconds.
+  ##### Compared To Average
+    How the scenario's average run time compares to all scenarios of the selected team, as a percentage. The long the run is compared to the average the redder it is, the shorter the run is compared to the average is the greener it is.  
+### Most Common Errors
+  List all the errors that failed tests had, and how offten that they occured. Ordered most offten occurring to lest offten.
+  ##### Error Message
+    The error message
+  ##### Error Count
+    How offten the error occured
 # Add Report
 # Teams
 # Profiles
