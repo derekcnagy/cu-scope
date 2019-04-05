@@ -1,10 +1,7 @@
 <%= render 'shared/header' %>
-<%= render "shared/login_overlay" %>
 <%= render "shared/menu" %>
 
-<div>Existing Teams</div>
-
-<table>
+<table id="teams_table">
   <th>Team Name</th>
   <th>Rename Team</th>
   <th>Delete Team</th>
@@ -24,6 +21,6 @@
 </table>
 
 <%= form_tag('/teams', multipart: true) do %>
-  <%= text_field_tag :team_name %>
-  <%= submit_tag "Add Team" %>
+  <%= text_field_tag :team_name, '', id: 'new_team_name' %>
+  <%= submit_tag "Add Team", id: 'new_team_submit' %>
 <% end %>

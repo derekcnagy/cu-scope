@@ -1,9 +1,8 @@
 <%= render 'shared/header' %>
-<%= render "shared/login_overlay" %>
 <%= render "shared/menu" %>
 
 <%= form_tag('/analytics/change_team_and_dates') do %>
-  <table>
+  <table id="analytics_options">
     <th>From Date</th>
     <th>To Date</th>
     <th>Team</th>
@@ -19,50 +18,53 @@
   </table>
 <% end %>
 
-<h2 class="most_failed_scenario">Most Failed Scenarios</h2>
-<h2 class="longest_running_test">Longest Running Tests</h2>
-<table class="most_failed_scenario">
-  <th>Scenario</th>
-  <th>Failed Percent</th>
-  <% @most_failed_scenarios.each do |scenario_id, scenario| %>
-    <tr>
-      <td><%= scenario[:scenario_name] %></td>
-      <td style="background-color: rgba(255, 0, 0, <%=scenario[:test_fail_percent].to_f / 100.0 %>)">
-        <%= scenario[:test_fail_percent] %>%
-      </td>
-    </tr>
-  <% end %>
-</table>
-
-<table class="longest_running_test">
-  <th>Scenario</th>
-  <th>Duration</th>
-  <th>Compared To Average</th>
-  <% @longest_running_tests.each do |scenario_id, scenario| %>
-    <tr>
-      <td><%= scenario[:scenario_name] %></td>
-      <td><%= scenario[:duration] %></td>
-      <% if scenario[:compared_to_average] > 100 %>
-        <td style="background-color: rgba(255, 0, 0, <%= (scenario[:compared_to_average] - 100).to_f / 100.0 %>)">
-          <%= scenario[:compared_to_average] %>%
+<div id="most_failed_longest_run_container">
+  <table id="most_failed_scenario">
+    <caption>Most Failed Scenarios</caption>
+    <th>Scenario</th>
+    <th>Failed Percent</th>
+    <% @most_failed_scenarios.each do |scenario_id, scenario| %>
+      <tr>
+        <td><%= scenario[:scenario_name] %></td>
+        <td style="background-color: rgba(255, 0, 0, <%=scenario[:test_fail_percent].to_f / 100.0 %>)">
+          <%= scenario[:test_fail_percent] %>%
         </td>
-      <% else %>
-        <td style="background-color: rgba(0, 255, 0, <%= (100 - scenario[:compared_to_average].to_f) / 100.0 %>)">
-          <%= scenario[:compared_to_average] %>%
-        </td>
-      <% end %>
-    </tr>
-  <% end %>
-</table>
+      </tr>
+    <% end %>
+  </table>
 
-<h2>Most Common Errors</h2>
-<table>
-  <th>Error Message</th>
-  <th>Error Count</th>
-  <% @most_common_errors.each do |error_messages_id, error| %>
-    <tr>
-      <td><%= error[:error_message] %></td>
-      <td><%= error[:error_count] %></td>
-    </tr>
-  <% end %>
-</table>
+  <table id="longest_running_test">
+    <caption>Longest Running Tests</caption>
+    <th>Scenario</th>
+    <th>Duration</th>
+    <th>Compared To Average</th>
+    <% @longest_running_tests.each do |scenario_id, scenario| %>
+      <tr>
+        <td><%= scenario[:scenario_name] %></td>
+        <td><%= scenario[:duration] %></td>
+        <% if scenario[:compared_to_average] > 100 %>
+          <td style="background-color: rgba(255, 0, 0, <%= (scenario[:compared_to_average] - 100).to_f / 100.0 %>)">
+            <%= scenario[:compared_to_average] %>%
+          </td>
+        <% else %>
+          <td style="background-color: rgba(0, 255, 0, <%= (100 - scenario[:compared_to_average].to_f) / 100.0 %>)">
+            <%= scenario[:compared_to_average] %>%
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </table>
+</div>
+<div id="most_common_errors_container">
+  <table id="most_common_errors">
+    <caption>Most Common Errors</caption>
+    <th>Error Message</th>
+    <th>Error Count</th>
+    <% @most_common_errors.each do |error_messages_id, error| %>
+      <tr>
+        <td><%= error[:error_message] %></td>
+        <td><%= error[:error_count] %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>

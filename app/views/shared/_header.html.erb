@@ -1,11 +1,12 @@
 <div id="header">
-  <div id="logo"><img src="assets/logo.png"></div>
+  <%= link_to image_tag("logo.png", border: 0), {:controller => :report_viewer, :action => :index}, id: 'logo' %>
 
   <div id="log_in_out">
     <% if session[:user_id].nil? %>
       <button id="login_button">Login</button>
-    <% else %>
-      <%= link_to "Log out", login_sessions_path, method: :delete %>
+      <%= render "shared/login_overlay" %>
+  <% else %>
+      <%= button_to "Log out", login_sessions_path, method: :delete,  id: 'logout' %>
     <% end %>
   </div>
 </div>

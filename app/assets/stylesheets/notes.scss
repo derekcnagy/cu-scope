@@ -13,17 +13,29 @@
 }
 
 #note_for_individual_test_title, #note_for_individual_test_table {
-  //background-color: blue;
-  background-color: rgba(0,0,255,.5);
+  background-color: rgba(0, 0, 255, .5);
 }
 
 #note_for_scenarios_title, #note_for_scenarios_table {
-  //background-color: blueviolet;
-  background-color: rgba(138,43,226,.5);
-
+  background-color: rgba(138, 43, 226, .5);
 }
 
 #note_for_error_messages_title, #note_for_error_messages_table {
-  //background-color: violet;
-  background-color: rgba(238,130,238,.5);
+  background-color: rgba(238, 130, 238, .5);
+}
+
+#note_for_individual_test_table, #note_for_scenarios_table, #note_for_error_messages_table {
+  width: 100%;
+}
+
+#notes_options input[type=submit] {
+  padding: 5px 20px;
+}
+
+#notes_options select {
+  padding: 5px 20px;
+}
+
+#notes_options input[type=date] {
+  padding: 3px;
 }

@@ -18,3 +18,23 @@
   display: inline;
   float: right;
 }
+
+#login_button, #logout{
+  background-color: white;
+  color: black;
+  padding: 14px 25px;
+  margin-left: 0;
+  margin-right: 0;
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+  border: 1px solid black;
+  border-radius: 20px;
+}
+
+#login_button:hover {
+  background-color: lawngreen;
+}
+#logout:hover {
+  background-color: red;
+}

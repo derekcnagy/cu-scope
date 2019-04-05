@@ -1,3 +1,17 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#users_table{
+  margin-bottom: 1%;
+}
+
+#users_table input[type=text] {
+  padding: 5px;
+}
+
+#users_table input[type=submit] {
+  padding: 5px 25px;
+}
+#users_table select {
+  padding: 5px 25px;
+}

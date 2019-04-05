@@ -1,11 +1,7 @@
 <%= render 'shared/header' %>
-<%= render "shared/login_overlay" %>
-
 <%= render "shared/menu" %>
 
-<div>Existing Profiles</div>
-
-<table>
+<table id="profiles_table">
   <th>Team Name</th>
   <th>Profile Name</th>
   <th>Rename Profile</th>
@@ -28,7 +24,7 @@
 </table>
 
 <%= form_tag('/profiles', multipart: true) do %>
-  <%= text_field_tag :profile_name %>
-  <%= select_tag 'team', options_from_collection_for_select(@teams, 'id', 'team_name') %>
-  <%= submit_tag 'Add Profile' %>
+  <%= text_field_tag :profile_name, '', id: 'new_profile_name' %>
+  <%= select_tag 'team', options_from_collection_for_select(@teams, 'id', 'team_name'), id: 'new_profile_team' %>
+  <%= submit_tag 'Add Profile', id: 'new_profile_submit' %>
 <% end %>

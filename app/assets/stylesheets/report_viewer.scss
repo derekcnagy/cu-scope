@@ -5,6 +5,7 @@
 table, th, td {
   border: 1px solid black;
 }
+
 table {
   background-color: white;
 }
@@ -13,15 +14,15 @@ table {
   font-weight: bolder;
 }
 
-.test_details, .feature_details, .scenario_details{
-  display:none;
+.test_details, .feature_details, .scenario_details {
+  display: none;
 }
 
-.feature_details{
+.feature_details {
   width: 200px;
 }
 
-.scenario_details{
+.scenario_details {
   width: 300px;
 }
 
@@ -37,14 +38,16 @@ table {
 .note_title_tests, .note_text_tests {
   background-color: blue;
 }
+
 .note_title_scenarios, .note_text_scenarios {
   background-color: blueviolet;
 }
+
 .note_title_errors, .note_text_errors {
   background-color: violet;
 }
 
-.duration_title, .duration_details, .error_message_title, .error_message_details{
+.duration_title, .duration_details, .error_message_title, .error_message_details {
   text-align: center;
   border-left: 1px solid black;
   border-right: 1px solid black;
@@ -60,7 +63,7 @@ table {
   border: 1px solid black;
 }
 
-.note_text_tests, .note_text_scenarios, .note_text_errors{
+.note_text_tests, .note_text_scenarios, .note_text_errors {
   border-bottom: 1px dashed black;
   border-left: 1px solid black;
   border-right: 1px solid black;
@@ -105,3 +108,58 @@ table {
 .note_form {
   display: none;
 }
+
+#report_options {
+  margin-bottom: 1%;
+}
+
+#report_options select {
+  padding: 5px;
+}
+
+#report_options input[type=submit] {
+  padding: 5px;
+}
+
+#report_options input[type=date] {
+  padding: 3px;
+}
+
+.add_note_button, .save_note_button, .cancel_add_note_button {
+  background-color: white;
+  color: black;
+  padding: 5px 0px;
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+  border: 1px solid black;
+  border-radius: 20px;
+}
+
+.cancel_add_note_button{
+  margin-top: 5px;
+}
+
+.add_note_button:hover, .save_note_button:hover {
+  background-color: lawngreen;
+}
+
+.cancel_add_note_button:hover{
+  background-color: red;
+}
+
+#note_for {
+  padding: 5px 5%;
+  width: 100%;
+  border-radius: 10px;
+}
+
+#note {
+  width: 95%;
+  border-radius: 10px;
+  margin-left: 2%;
+}
+
