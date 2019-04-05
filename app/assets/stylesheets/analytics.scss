@@ -2,22 +2,42 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.most_failed_scenario{
+#analytics_options {
+  margin-bottom: 10px;
+}
+#analytics_options select {
+  padding: 5px;
+}
+
+#analytics_options input[type=submit] {
+  padding: 5px 10px;
+}
+
+#analytics_options input[type=date] {
+  padding: 3px;
+}
+
+#most_failed_scenario {
   width: 50%;
   float: left;
 }
-.longest_running_test{
+
+#longest_running_test {
   width: 50%;
   float: right;
 }
 
-#analytics_options select{
-  padding: 5px;
+#longest_running_test caption, #most_failed_scenario caption, #most_common_errors caption {
+  background-color: white;
+  font-weight: bold;
+  font-size: x-large;
+  border: 1px black solid;
 }
 
-#analytics_options input[type=submit]{
-  padding: 5px 10px;
+#most_common_errors {
+  width: 100%;
 }
-#analytics_options input[type=date]{
-  padding: 3px;
+
+#most_failed_longest_run_container{
+  margin-bottom: 450px;
 }
