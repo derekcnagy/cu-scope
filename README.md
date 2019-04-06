@@ -71,9 +71,129 @@
   ##### Error Count
     How offten the error occured
 # Add Report
+  Only averable for Contributors and Admins.
+### Files to Process
+  ##### File Name
+    Name of the File to process.
+  ##### Time Ran
+    The Time the test run of the file ran. If a timestamp is in the file name this field will default to that.
+  ##### Team 
+    Name of the team the file is for. If a team name is in the file name this field will default to that.
+  ##### Profile
+    Name of the profile the file is for. If a profile name is in the file name this field will default to that.
+  ##### Process
+    Click to process the file.
+    
+### Upload File
+  New run files can be uploaded from here.
+  
+### File Formatting 
+    If you want the time ran, team, and profile to auto-fill put dashes(-) between them in the file name. Order dose not matter. 
+    Examples: 
+      20190220013954-my_team-a_profile.json
 # Teams
+Only averable for Admins.
+
+###### Team Name
+    Name of the team, can be changed
+###### Rename Team
+    Will save the team name as what you changed it to.
+###### Delete Team
+    Deletes the team.
+###### Add Team
+    Creates a new team.
 # Profiles
+Only averable for Admins.
+
+###### Profile Name
+    Name of the profile, can be changed
+###### Rename Profile
+    Will save the profile name as what you changed it to.
+###### Delete Profile
+    Deletes the profile.
+###### Add Profile
+    Creates a new profile
 # Test Runs
+Only averable for Admins.
+
+##### Test Run Name	
+   Name of the file the test run was uploaded from.
+##### Time Ran	
+  The time the test run ran.
+##### Team	
+  Name of the team the test run is for.
+##### Profile	
+  Name of the profile the test run is for.
+##### Delete
+  Deletes the test run.
+
 # Notes
+Only averable for Admins and Contributor.
+### Notes Filter
+  ##### From Date
+    Filter out notes from test runs after this date. 
+    Defaults to todays date.  
+  ##### To Date
+    Filter out notes from test runs before this date.
+    Defaults to 30 days ago.
+  ##### Team
+    Will only pull notes from selected team.
+    Defaults to the user's team, or no team.
+    
+### Notes for Scenarios
+##### Note	
+    The Text of the Note.
+##### Feature	
+    The name of the feature of the scenario the note is for. 
+##### Scenario	
+    The name of the scenario the note is for.
+##### Error Message	
+    The error message the note is for.
+##### Last Date Invoked	
+    The date of the most recent test run the note was invoked.
+##### Date Created	
+    The date the note was created.
+##### Delete
+    Deletes the note.
+
+### Notes for Error Message
+##### Note	
+    The Text of the Note.
+##### Error Message	
+    The error message the note is for.
+##### Last Date Invoked	
+    The date of the most recent test run the note was invoked.
+##### Date Created	
+    The date the note was created.
+##### Delete
+    Deletes the note.
+
+### Notes for Individual Test
+##### Note	
+    The Text of the Note.
+##### Time Ran	
+    The date of the test run the note is for.
+##### Feature	
+    The name of the feature of the scenario the note is for. 
+##### Scenario	
+    The name of the scenario the note is for.
+##### Error Message	
+    The error message the note is for.
+##### Date Created	
+    The date the note was created.
+##### Delete  
+    Deletes the note.
+
 # Users
+Only averable for Admins.
+##### Username	
+##### First Name	
+##### Last Name	
+##### Team	
+##### User Type	
+##### Update User	
+##### Reset Password	
+##### Delete User
+
+
 # Settings
