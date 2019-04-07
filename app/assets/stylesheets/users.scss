@@ -15,3 +15,15 @@
 #users_table select {
   padding: 5px 25px;
 }
+
+#new_passwords_notice{
+  background-color: yellow;
+  color: black;
+  font-weight: bolder;
+  font-size: 24px;
+  padding: 10px;
+  width: 30%;
+  text-align: center;
+  border-radius: 10px;
+  border: black solid 1px;
+}

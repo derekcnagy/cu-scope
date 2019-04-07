@@ -30,8 +30,9 @@ class UsersController < ApplicationController
     new_password = SecureRandom.alphanumeric 8
     user = User.find params[:id]
     user.password = new_password
+    user.password_confirmation = new_password
     user.save
-    flash.alert = "New Password For #{user.username}: #{new_password}"
+    flash.notice = "New Password For #{user.username}: #{new_password}"
     redirect_back(fallback_location: root_path)
   end
 end
