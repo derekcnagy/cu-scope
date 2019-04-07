@@ -92,7 +92,7 @@
     Examples: 
       20190220013954-my_team-a_profile.json
 # Teams
-Only averable for Admins.
+Only available for Admins.
 
 ###### Team Name
     Name of the team, can be changed
@@ -114,7 +114,7 @@ Only averable for Admins.
 ###### Add Profile
     Creates a new profile
 # Test Runs
-Only averable for Admins.
+Only available for Admins.
 
 ##### Test Run Name	
    Name of the file the test run was uploaded from.
@@ -128,7 +128,7 @@ Only averable for Admins.
   Deletes the test run.
 
 # Notes
-Only averable for Admins and Contributor.
+Only available for Admins and Contributor.
 ### Notes Filter
   ##### From Date
     Filter out notes from test runs after this date. 
@@ -185,15 +185,23 @@ Only averable for Admins and Contributor.
     Deletes the note.
 
 # Users
-Only averable for Admins.
+Only available for Admins.
 ##### Username	
+  The user's username. Can be changed.
 ##### First Name	
+  The user's first name. Can be changed.
 ##### Last Name	
+  The user's last name. Can be changed.
 ##### Team	
+  The user's team. Can be changed.
 ##### User Type	
+  The user's user type. Can be changed.
 ##### Update User	
+  Will save the changes you made to the user. 
 ##### Reset Password	
+  Will reset the users password. New password will be displayed above the table.
 ##### Delete User
+  Will Delete the user
 
 
 # Settings
