@@ -6,7 +6,7 @@
     <th>From Date</th>
     <th>To Date</th>
     <th>Team</th>
-    <th>View Analytics</th>
+    <th>View Notes</th>
     <tr>
       <td><%= date_field_tag :from_date, @from_date %></td>
       <td><%= date_field_tag :to_date, @to_date %></td>
@@ -74,7 +74,6 @@
     <th>Feature</th>
     <th>Scenario</th>
     <th>Error Message</th>
-    <th>Last Date Invoked</th>
     <th>Date Created</th>
     <th>Delete</th>
     <% @notes_for_individual_test.each do |note| %>
@@ -84,7 +83,6 @@
         <td><%= @individual_tests[note.individual_test_id][:feature] %></td>
         <td><%= @individual_tests[note.individual_test_id][:scenario] %></td>
         <td><%= @error_messages[note.error_message_id] %></td>
-        <td><%= note.last_date_invoked %></td>
         <td><%= note.date_created %></td>
         <%= form_tag note, method: :delete do %>
           <td><%= submit_tag 'Delete' %></td>

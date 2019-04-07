@@ -4,9 +4,11 @@
   <% unless session[:user_id].nil? %>
     <% unless session[:user_type].eql? 3 %>
       <%= link_to 'Add Report', {:controller => :file_uploader, :action => :index}, id: 'add_report_link', class: "menu_link #{'current_page' if @current_page.eql? :add_reports}" %>
-      <%= link_to 'Teams', {:controller => :teams, :action => :index}, id: 'teams_link', class: "menu_link #{'current_page' if @current_page.eql? :teams}" %>
-      <%= link_to 'Profiles', {:controller => :profiles, :action => :index}, id: 'profiles_link', class: "menu_link #{'current_page' if @current_page.eql? :profiles}" %>
-      <%= link_to 'Test Runs', {:controller => :test_runs, :action => :index}, id: 'test_runs_link', class: "menu_link #{'current_page' if @current_page.eql? :test_runs}" %>
+      <% if session[:user_type].eql? 1 %>
+        <%= link_to 'Teams', {:controller => :teams, :action => :index}, id: 'teams_link', class: "menu_link #{'current_page' if @current_page.eql? :teams}" %>
+        <%= link_to 'Profiles', {:controller => :profiles, :action => :index}, id: 'profiles_link', class: "menu_link #{'current_page' if @current_page.eql? :profiles}" %>
+        <%= link_to 'Test Runs', {:controller => :test_runs, :action => :index}, id: 'test_runs_link', class: "menu_link #{'current_page' if @current_page.eql? :test_runs}" %>
+      <% end %>
       <%= link_to 'Notes', {:controller => :notes, :action => :index}, id: 'notes_link', class: "menu_link #{'current_page' if @current_page.eql? :notes}" %>
       <% if session[:user_type].eql? 1 %>
         <%= link_to 'Users', {:controller => :users, :action => :index}, id: 'users_link', class: "menu_link #{'current_page' if @current_page.eql? :users}" %>

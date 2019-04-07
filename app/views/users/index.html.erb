@@ -1,8 +1,8 @@
 <%= render 'shared/header' %>
 <%= render "shared/menu" %>
 
-<% if flash[:alert] %>
-  <div class="alert"><%= flash[:alert] %></div>
+<% if flash[:notice] %>
+  <div id="new_passwords_notice" class="notice"><%= flash[:notice] %></div>
 <% end %>
 <table id="users_table">
   <th>Username</th>
